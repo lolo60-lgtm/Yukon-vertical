@@ -90,7 +90,7 @@ export function About() {
                   <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
                     <Icon className="h-6 w-6 text-accent" />
                   </div>
-                  <span className="font-mono text-2xl font-bold text-foreground">
+                  <span className="font-sans font-black text-3xl text-foreground">
                     {stat.value}
                   </span>
                   <span className="mt-1 text-sm text-muted-foreground">{stat.label}</span>
