@@ -9,7 +9,7 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
               <span className="font-mono text-lg font-bold text-foreground">{"YUKON"}</span>
-              <span className="font-mono text-lg font-bold text-accent">{"KOD 95"}</span>
+              <span className="font-sans font-black text-[1.1em]">{"95"}</span>
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground">
               {"Помогаем водителям легально работать в Европе. Обучение онлайн, всего 1 визит в Краков."}
@@ -43,11 +43,11 @@ export function Footer() {
                 <span>{"+48 000 000 000"}</span>
               </a>
               <a
-                href="mailto:yukonkod95@gmail.com"
+                href="mailto:yukon95@gmail.com"
                 className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-accent"
               >
                 <Mail className="h-4 w-4 shrink-0 text-accent" />
-                <span>{"yukonkod95@gmail.com"}</span>
+                <span>{"yukon95@gmail.com"}</span>
               </a>
             </div>
           </div>
@@ -57,7 +57,7 @@ export function Footer() {
             <h3 className="font-serif text-lg font-bold text-foreground">{"Наш офис"}</h3>
             <div className="overflow-hidden rounded-xl border border-border">
               <iframe
-                title="Yukon KOD 95 office location"
+                title="Yukon  95 office location"
                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=al.+29+Listopada+130%2F421%2C+31-406+Krak%C3%B3w%2C+Polska&zoom=16"
                 width="100%"
                 height="200"
