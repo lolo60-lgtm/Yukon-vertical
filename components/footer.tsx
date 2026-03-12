@@ -9,15 +9,15 @@ export function Footer() {
           {/* Company info */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
-              <span className="flex items-baseline font-mono text-2xl font-bold tracking-tight text-primary">
-                {"YUKON "}
-                <span className="ml-2 text-accent">
-                  {"KOD "}
-                  <span className="font-sans font-black text-[1.1em] leading-none">
-                    {"95"}
-                  </span>
-                </span>
-              </span>
+              <span className="flex items-baseline font-mono text-2xl font-bold tracking-tight">
+  <span className="text-primary">{"YUKON "}</span>
+  <span className="ml-2 text-accent">
+    {"KOD "}
+    <span className="font-sans font-black text-[1.1em] leading-none">
+      {"95"}
+    </span>
+  </span>
+</span>
             </div> {/* <-- Вот этот закрывающий div был потерян! */}
 
             <p className="text-sm leading-relaxed text-muted-foreground">
