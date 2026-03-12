@@ -85,8 +85,8 @@ export function Info() {
           {steps.map((step, i) => {
             const Icon = step.icon
             return (
-              <FadeInSection key={step.step} delay={i * 120}>
-                <div className="relative flex flex-col items-center rounded-xl border border-border bg-background p-6 text-center shadow-sm transition-shadow duration-300 hover:shadow-xl">
+             <FadeInSection key={step.step} delay={i * 120} className="h-full">
+                <div className="relative flex h-full flex-col items-center rounded-xl border border-border bg-background p-6 text-center shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-xl">
                   <span className="absolute -top-4 left-6 font-mono text-sm font-bold text-accent">
                     {step.step}
                   </span>
