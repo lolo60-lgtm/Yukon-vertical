@@ -87,7 +87,7 @@ export function Info() {
             return (
              <FadeInSection key={step.step} delay={i * 120} className="h-full">
                 <div className="relative flex h-full flex-col items-center rounded-xl border border-border bg-background p-6 text-center shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-xl">
-                  <span className="absolute -top-4 left-6 font-mono text-sm font-bold text-accent">
+                  <span className="absolute -top-4 left-6 font-mono text-sm font-bold text-primary">
                     {step.step}
                   </span>
                   <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-foreground">
