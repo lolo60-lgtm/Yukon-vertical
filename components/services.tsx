@@ -87,11 +87,11 @@ function AnimatedCard({
 
   return (
     <div
-      ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-      }`}
-    >
+  ref={ref}
+  className={`h-full transition-all duration-700 ease-out ${
+    visible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+  }`}
+>
       {children}
     </div>
   )
@@ -173,8 +173,8 @@ export function Services() {
             .map((service, i) => {
               const Icon = service.icon
               return (
-                <AnimatedCard key={service.title} delay={i * 100}>
-                  <div className="group flex flex-col items-center rounded-xl border border-border bg-background p-6 text-center shadow-sm transition-all duration-300 hover:border-accent/30 hover:shadow-xl">
+                <AnimatedCard key={service.title} delay={i * 100} className="h-full">
+                  <div className="group flex h-full flex-col items-center rounded-xl border border-border bg-background p-6 text-center shadow-sm transition-all duration-300 hover:border-accent/30 hover:scale-105 hover:shadow-xl">
                     <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 transition-transform duration-300 group-hover:scale-105">
                       <Icon className="h-7 w-7 text-accent" />
                     </div>
