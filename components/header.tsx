@@ -31,8 +31,14 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const bgOpacity = Math.min(0.97, 0.70 + (scrollY / 120) * 0.27)
-  const blurAmount = Math.min(20, 8 + (scrollY / 120) * 12)
+  // Прогресс от 0 до 1 (полностью за 80px скролла)
+  const progress = Math.min(1, scrollY / 80)
+
+  // Фон: от полностью прозрачного (0) до полупрозрачного белого (0.75)
+  const bgOpacity = progress * 0.78
+
+  // Блюр: от 0px до 24px
+  const blurAmount = progress * 24
 
   function handleAnchorClick(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
     e.preventDefault()
@@ -50,31 +56,24 @@ export function Header() {
 
   return (
     <>
-      <div
-        className="pointer-events-none fixed left-0 right-0 top-0 z-40 lg:hidden"
-        style={{
-          height: "80px",
-          backdropFilter: scrollY > 5 ? `blur(${Math.min(6, (scrollY / 120) * 6)}px)` : "none",
-          WebkitBackdropFilter: scrollY > 5 ? `blur(${Math.min(6, (scrollY / 120) * 6)}px)` : "none",
-          maskImage: "linear-gradient(to bottom, black 0%, black 40%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 40%, transparent 100%)",
-          transition: "opacity 0.4s ease",
-          opacity: scrollY > 5 ? 1 : 0,
-        }}
-      />
-
       <header
         className={`sticky top-0 z-50 transition-shadow duration-300 ${
           scrolled ? "shadow-md" : "shadow-none"
         }`}
         style={{
+          // Ключевое: фон полупрозрачный — сквозь него виден контент
           backgroundColor: `rgba(255, 255, 255, ${bgOpacity})`,
-          backdropFilter: `blur(${blurAmount}px)`,
-          WebkitBackdropFilter: `blur(${blurAmount}px)`,
-          transition: "background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.3s ease",
+          // Именно это создаёт эффект матового стекла
+          backdropFilter: `blur(${blurAmount}px) saturate(180%)`,
+          WebkitBackdropFilter: `blur(${blurAmount}px) saturate(180%)`,
+          // Плавное появление
+          transition: "background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease",
         }}
       >
-        <div className="hidden border-b border-border bg-secondary sm:block">
+        {/* Top bar — только на десктопе */}
+        <div className="hidden border-b border-border/60 sm:block"
+          style={{ backgroundColor: `rgba(245, 245, 245, ${bgOpacity * 0.6})` }}
+        >
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs sm:text-sm">
             <div className="flex flex-wrap items-center gap-4">
               <span className="flex items-center gap-1 text-foreground">
@@ -99,6 +98,7 @@ export function Header() {
           </div>
         </div>
 
+        {/* Main nav */}
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
           <Link href="/" className="flex items-center gap-2">
             <span className="font-mono text-2xl font-bold tracking-tight text-foreground">{"YUKON"}</span>
@@ -117,7 +117,9 @@ export function Header() {
                 </a>
               ) : (
                 <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}
-                  className={`font-sans text-sm font-medium transition-colors hover:text-accent ${pathname.startsWith(link.href) ? "text-accent" : "text-foreground"}`}>
+                  className={`font-sans text-sm font-medium transition-colors hover:text-accent ${
+                    pathname.startsWith(link.href) ? "text-accent" : "text-foreground"
+                  }`}>
                   {link.label}
                 </Link>
               )
@@ -130,8 +132,9 @@ export function Header() {
           </button>
         </div>
 
+        {/* Mobile menu */}
         {mobileOpen && (
-          <nav className="border-t border-border bg-background/95 px-4 pb-4 lg:hidden">
+          <nav className="border-t border-border bg-background/95 px-4 pb-4 backdrop-blur-xl lg:hidden">
             <div className="flex flex-col gap-1 pt-2">
               {navLinks.map((link) =>
                 link.anchor ? (
