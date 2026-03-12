@@ -83,7 +83,7 @@ export function Header() {
           </span>
           <span className="font-mono text-2xl font-bold text-accent">
             {"KOD "}
-            <span>{"95"}</span>
+            <span className="tracking-[0.1em]">{"95"}</span>
           </span>
         </a>
 
