@@ -31,13 +31,8 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Прогресс от 0 до 1 (полностью за 80px скролла)
   const progress = Math.min(1, scrollY / 80)
-
-  // Фон: от полностью прозрачного (0) до полупрозрачного белого (0.75)
   const bgOpacity = progress * 0.78
-
-  // Блюр: от 0px до 24px
   const blurAmount = progress * 24
 
   function handleAnchorClick(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
@@ -56,22 +51,46 @@ export function Header() {
 
   return (
     <>
+      {/*
+        ═══════════════════════════════════════════════════
+        ВЕРХНИЙ БЛЮР-ЗАНАВЕС — только мобильные (lg:hidden)
+        Висит ВСЕГДА поверх всего контента.
+        Закрывает зону выше хедера (статус-бар + браузерный UI).
+        Сильный блюр сверху → плавно тает к низу.
+        ═══════════════════════════════════════════════════
+      */}
+      <div
+        className="pointer-events-none fixed left-0 right-0 top-0 z-[9999] lg:hidden"
+        style={{
+          // Высота покрывает статус-бар + немного ниже (учитываем safe-area iOS)
+          height: "calc(env(safe-area-inset-top, 0px) + 56px)",
+          // Матовое стекло
+          backdropFilter: "blur(18px) saturate(160%)",
+          WebkitBackdropFilter: "blur(18px) saturate(160%)",
+          // Полупрозрачный белый фон
+          backgroundColor: "rgba(255, 255, 255, 0.55)",
+          // Градиентная маска: непрозрачная сверху → полностью прозрачная снизу
+          // Это создаёт плавное "растворение" блюра к хедеру
+          maskImage: "linear-gradient(to bottom, black 0%, black 55%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 55%, transparent 100%)",
+        }}
+      />
+
+      {/* Основной хедер */}
       <header
         className={`sticky top-0 z-50 transition-shadow duration-300 ${
           scrolled ? "shadow-md" : "shadow-none"
         }`}
         style={{
-          // Ключевое: фон полупрозрачный — сквозь него виден контент
           backgroundColor: `rgba(255, 255, 255, ${bgOpacity})`,
-          // Именно это создаёт эффект матового стекла
           backdropFilter: `blur(${blurAmount}px) saturate(180%)`,
           WebkitBackdropFilter: `blur(${blurAmount}px) saturate(180%)`,
-          // Плавное появление
           transition: "background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease",
         }}
       >
-        {/* Top bar — только на десктопе */}
-        <div className="hidden border-b border-border/60 sm:block"
+        {/* Top bar — только десктоп */}
+        <div
+          className="hidden border-b border-border/60 sm:block"
           style={{ backgroundColor: `rgba(245, 245, 245, ${bgOpacity * 0.6})` }}
         >
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs sm:text-sm">
@@ -127,7 +146,8 @@ export function Header() {
           </nav>
 
           <button onClick={() => setMobileOpen(!mobileOpen)}
-            className="rounded-md p-2 text-foreground transition-colors hover:bg-secondary lg:hidden" aria-label="Toggle menu">
+            className="rounded-md p-2 text-foreground transition-colors hover:bg-secondary lg:hidden"
+            aria-label="Toggle menu">
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
