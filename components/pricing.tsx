@@ -150,14 +150,14 @@ export function Pricing() {
                       {plan.title}
                     </h3>
                     <span
-                      className={`font-mono text-sm font-bold tracking-wider ${
+                      className={`font-mono text-base font-bold tracking-wider ${
                         plan.featured ? "text-accent" : "text-accent"
                       }`}
                     >
                       {plan.subtitle}
                     </span>
                     <p
-                      className={`mt-3 text-sm leading-relaxed ${
+                      className={`mt-3 text-base leading-relaxed ${
                         plan.featured ? "text-primary-foreground/70" : "text-muted-foreground"
                       }`}
                     >
@@ -177,7 +177,7 @@ export function Pricing() {
                           {plan.price}
                         </span>
                         <span
-                          className={`ml-1 text-sm font-medium ${
+                          className={`ml-1 text-base font-medium ${
                             plan.featured ? "text-primary-foreground/60" : "text-muted-foreground"
                           }`}
                         >
@@ -214,7 +214,7 @@ export function Pricing() {
                           <Check className="h-3 w-3 text-accent" />
                         </div>
                         <span
-                          className={`text-sm ${
+                          className={`text-base ${
                             plan.featured ? "text-primary-foreground/80" : "text-muted-foreground"
                           }`}
                         >
@@ -229,7 +229,7 @@ export function Pricing() {
                     {plan.available ? (
                       <a
                         href="#contact"
-                        className={`flex w-full items-center justify-center rounded-lg px-6 py-3.5 text-sm font-semibold transition-all hover:scale-105 ${
+                        className={`flex w-full items-center justify-center rounded-lg px-6 py-3.5 text-base font-semibold transition-all hover:scale-105 ${
                           plan.featured
                             ? "bg-accent text-white hover:bg-accent/90"
                             : "border-2 border-accent bg-transparent text-accent hover:bg-accent hover:text-white"
@@ -240,7 +240,7 @@ export function Pricing() {
                     ) : (
                       <button
                         disabled
-                        className="flex w-full cursor-not-allowed items-center justify-center rounded-lg border-2 border-muted bg-muted/50 px-6 py-3.5 text-sm font-semibold text-muted-foreground"
+                        className="flex w-full cursor-not-allowed items-center justify-center rounded-lg border-2 border-muted bg-muted/50 px-6 py-3.5 text-base font-semibold text-muted-foreground"
                       >
                         {plan.cta}
                       </button>
@@ -254,7 +254,7 @@ export function Pricing() {
 
         {/* Bottom note */}
         <FadeInSection delay={400}>
-          <p className="mt-10 text-center text-sm text-muted-foreground">
+          <p className="mt-10 text-center text-base text-muted-foreground">
             {"Есть вопросы по стоимости? "}
             <a href="#contact" className="font-semibold text-accent underline-offset-4 hover:underline">
               {"Напишите нам"}
