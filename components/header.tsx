@@ -5,9 +5,9 @@ import { Menu, X, Phone, Mail, MapPin, Clock } from "lucide-react"
 
 const navLinks = [
   { label: "Главная", href: "#hero" },
+  { label: "Услуги", href: "#services" },
   { label: "О нас", href: "#about" },
   { label: "Информация", href: "#info" },
-  { label: "Услуги", href: "#services" },
   { label: "Контакт", href: "#contact" },
 ]
 
