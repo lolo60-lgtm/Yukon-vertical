@@ -86,7 +86,7 @@ export function About() {
             const Icon = stat.icon
             return (
               <FadeInSection key={stat.label} delay={i * 100}>
-                <div className="flex flex-col items-center rounded-xl bg-background p-6 text-center shadow-sm transition-shadow duration-300 hover:shadow-xl">
+                <div className="flex flex-col items-center rounded-xl bg-background p-6 text-center shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-xl">
                   <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
                     <Icon className="h-6 w-6 text-accent" />
                   </div>
