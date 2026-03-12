@@ -1,20 +1,24 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, X, Phone, Mail, MapPin, Clock } from "lucide-react"
 
 const navLinks = [
-  { label: "Главная", href: "#hero" },
-  { label: "Услуги", href: "#services" },
-  { label: "О нас", href: "#about" },
-  { label: "Информация", href: "#info" },
-  { label: "Цены", href: "#pricing" },
-  { label: "Контакт", href: "#contact" },
+  { label: "Главная", href: "/#hero", anchor: true },
+  { label: "Услуги", href: "/#services", anchor: true },
+  { label: "О нас", href: "/#about", anchor: true },
+  { label: "База знаний", href: "/knowledge", anchor: false },
+  { label: "Цены", href: "/#pricing", anchor: true },
+  { label: "Контакт", href: "/#contact", anchor: true },
 ]
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
+  const isHome = pathname === "/"
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
@@ -23,12 +27,21 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  function handleNavClick(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
+  function handleAnchorClick(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
     e.preventDefault()
     setMobileOpen(false)
-    const target = document.querySelector(href)
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" })
+
+    // Extract anchor part (e.g. "/#contact" -> "#contact")
+    const anchor = href.startsWith("/") ? href.slice(1) : href
+
+    if (isHome) {
+      const target = document.querySelector(anchor)
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" })
+      }
+    } else {
+      // Navigate to home then scroll
+      window.location.href = href
     }
   }
 
@@ -38,8 +51,8 @@ export function Header() {
         scrolled ? "shadow-md" : "shadow-none"
       }`}
     >
-      {/* Top bar */}
-      <div className="border-b border-border bg-secondary">
+      {/* Top bar — hidden on mobile */}
+      <div className="hidden border-b border-border bg-secondary sm:block">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs sm:text-sm">
           <div className="flex flex-wrap items-center gap-4">
             <span className="flex items-center gap-1 text-foreground">
@@ -73,11 +86,7 @@ export function Header() {
       {/* Main nav */}
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         {/* Logo */}
-        <a
-          href="#hero"
-          onClick={(e) => handleNavClick(e, "#hero")}
-          className="flex items-center gap-2"
-        >
+        <Link href="/" className="flex items-center gap-2">
           <span className="font-mono text-2xl font-bold tracking-tight text-foreground">
             {"YUKON"}
           </span>
@@ -85,20 +94,33 @@ export function Header() {
             {"KOD "}
             <span className="font-sans font-black text-[1.1em]">{"95"}</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-6 lg:flex">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
-              className="font-sans text-sm font-medium text-foreground transition-colors hover:text-accent"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.anchor ? (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleAnchorClick(e, link.href)}
+                className="font-sans text-sm font-medium text-foreground transition-colors hover:text-accent"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className={`font-sans text-sm font-medium transition-colors hover:text-accent ${
+                  pathname.startsWith(link.href) ? "text-accent" : "text-foreground"
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </nav>
 
         {/* Mobile toggle */}
@@ -115,16 +137,27 @@ export function Header() {
       {mobileOpen && (
         <nav className="border-t border-border bg-background px-4 pb-4 lg:hidden">
           <div className="flex flex-col gap-1 pt-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="rounded-md px-3 py-2.5 font-sans text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.anchor ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleAnchorClick(e, link.href)}
+                  className="rounded-md px-3 py-2.5 font-sans text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="rounded-md px-3 py-2.5 font-sans text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </div>
         </nav>
       )}
