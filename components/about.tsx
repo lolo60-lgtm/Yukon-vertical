@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
 import { Shield, Users, Award, Headphones } from "lucide-react"
 
 const stats = [
@@ -51,12 +50,12 @@ export function About() {
           {/* Image side */}
           <FadeInSection>
             <div className="relative overflow-hidden rounded-2xl shadow-lg">
-              <Image
-                src="/images/krakow.jpg"
+              <img
+                src="https://i.postimg.cc/cCShGFSH/%D0%9D%D0%BE%D0%BC%D0%B5%D1%80_1.jpg"
                 alt="Краков, Польша - город где базируется Yukon KOD 95"
+                className="h-auto w-full object-cover"
                 width={700}
                 height={470}
-                className="h-auto w-full object-cover"
               />
             </div>
           </FadeInSection>
