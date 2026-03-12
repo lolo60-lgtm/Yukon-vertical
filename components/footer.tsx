@@ -8,9 +8,15 @@ export function Footer() {
           {/* Company info */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
-              <span className="font-mono text-lg font-bold text-foreground">{"YUKON"}</span>
-              <span className="font-sans font-black text-[1.1em]">{"95"}</span>
-            </div>
+             <span className="flex items-baseline font-mono text-2xl font-bold tracking-tight text-primary">
+  {"YUKON "}
+  <span className="ml-2 text-accent">
+    {"KOD "}
+    <span className="font-sans font-black text-[1.1em] leading-none">
+      {"95"}
+    </span>
+  </span>
+</span>
             <p className="text-sm leading-relaxed text-muted-foreground">
               {"Помогаем водителям легально работать в Европе. Обучение онлайн, всего 1 визит в Краков."}
             </p>
