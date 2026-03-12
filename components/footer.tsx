@@ -5,21 +5,25 @@ export function Footer() {
     <footer className="border-t border-border bg-secondary py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+          
           {/* Company info */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
-             <span className="flex items-baseline font-mono text-2xl font-bold tracking-tight text-primary">
-  {"YUKON "}
-  <span className="ml-2 text-accent">
-    {"KOD "}
-    <span className="font-sans font-black text-[1.1em] leading-none">
-      {"95"}
-    </span>
-  </span>
-</span>
+              <span className="flex items-baseline font-mono text-2xl font-bold tracking-tight text-primary">
+                {"YUKON "}
+                <span className="ml-2 text-accent">
+                  {"KOD "}
+                  <span className="font-sans font-black text-[1.1em] leading-none">
+                    {"95"}
+                  </span>
+                </span>
+              </span>
+            </div> {/* <-- Вот этот закрывающий div был потерян! */}
+
             <p className="text-sm leading-relaxed text-muted-foreground">
               {"Помогаем водителям легально работать в Европе. Обучение онлайн, всего 1 визит в Краков."}
             </p>
+            
             <div className="flex gap-3">
               <a
                 href="https://www.instagram.com/yukon_kod_95/"
@@ -63,7 +67,7 @@ export function Footer() {
             <h3 className="font-serif text-lg font-bold text-foreground">{"Наш офис"}</h3>
             <div className="overflow-hidden rounded-xl border border-border">
               <iframe
-                title="Yukon  95 office location"
+                title="Yukon 95 office location"
                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=al.+29+Listopada+130%2F421%2C+31-406+Krak%C3%B3w%2C+Polska&zoom=16"
                 width="100%"
                 height="200"
