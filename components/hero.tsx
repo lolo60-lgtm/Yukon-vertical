@@ -33,7 +33,7 @@ export function Hero() {
       >
         <h1 className="text-balance font-mono text-4xl font-bold leading-tight tracking-tight text-primary-foreground sm:text-5xl md:text-6xl lg:text-7xl">
           {"Получи Код "}
-          <span>{"95"}</span>
+          <span className="font-sans font-black text-[1.1em]">{"95"}</span>
           <br />
           {"для работы в Европе"}
         </h1>
