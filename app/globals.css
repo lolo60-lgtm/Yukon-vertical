@@ -10,19 +10,19 @@
   --card-foreground: #00416a;
   --popover: #ffffff;
   --popover-foreground: #00416a;
-  --primary: #00416a;
+  --primary: #4689e1;           /* БЫЛО #00416a, ТЕПЕРЬ СИНИЙ */
   --primary-foreground: #ffffff;
   --secondary: #f5f5f5;
   --secondary-foreground: #00416a;
   --muted: #f0f0f0;
   --muted-foreground: #5a7a8a;
-  --accent: #4689e1;
+  --accent: #4689e1;            /* ТОЖЕ СИНИЙ */
   --accent-foreground: #ffffff;
   --destructive: #e74c3c;
   --destructive-foreground: #ffffff;
   --border: #e0e0e0;
   --input: #e0e0e0;
-  --ring: #00416a;
+  --ring: #4689e1;              /* КОЛЬЦО ФОКУСА ТОЖЕ СИНИМ */
   --radius: 0.5rem;
 }
 
