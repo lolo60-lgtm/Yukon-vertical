@@ -150,12 +150,19 @@ export function Pricing() {
                       {plan.title}
                     </h3>
                     <span
-                      className={`font-mono text-lg font-bold tracking-wider ${
-                        plan.featured ? "text-accent" : "text-accent"
-                      }`}
-                    >
-                      {plan.subtitle}
-                    </span>
+  className={`font-mono text-lg font-bold tracking-wider ${
+    plan.featured ? "text-accent" : "text-accent"
+  }`}
+>
+  {plan.subtitle === "КОД 95" ? (
+    <>
+      {"КОД "}
+      <span className="font-sans font-black tracking-normal">{"95"}</span>
+    </>
+  ) : (
+    plan.subtitle
+  )}
+</span>
                     <p
                       className={`mt-3 text-lg leading-relaxed ${
                         plan.featured ? "text-primary-foreground/70" : "text-muted-foreground"
