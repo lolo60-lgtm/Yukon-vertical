@@ -43,7 +43,7 @@ export function Hero() {
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href="#services"
+            href="#contact"
             className="rounded-lg bg-[#4689e1] px-8 py-4 font-sans text-base font-semibold text-white transition-all hover:scale-105 hover:bg-[#3670c2]"
           >
             {"Записаться на курс"}
