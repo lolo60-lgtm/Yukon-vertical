@@ -68,7 +68,7 @@ export function About() {
                 {"О компании "}
                 <span className="font-mono text-2xl tracking-tight text-foreground sm:text-3xl md:text-4xl">{"YUKON"}</span>{" "}
                 <span className="font-mono text-2xl tracking-tight text-accent sm:text-3xl md:text-4xl">{"KOD "}
-                  <span>{"95"}</span>
+                  <span className="font-sans font-black text-[1.1em]">{"95"}</span>
                 </span>
               </h2>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
