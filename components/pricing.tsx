@@ -143,21 +143,21 @@ export function Pricing() {
                   {/* Title */}
                   <div className="text-center">
                     <h3
-                      className={`font-serif text-2xl font-bold ${
+                      className={`font-serif text-4xl font-bold ${
                         plan.featured ? "text-primary-foreground" : "text-foreground"
                       }`}
                     >
                       {plan.title}
                     </h3>
                     <span
-                      className={`font-mono text-base font-bold tracking-wider ${
+                      className={`font-mono text-lg font-bold tracking-wider ${
                         plan.featured ? "text-accent" : "text-accent"
                       }`}
                     >
                       {plan.subtitle}
                     </span>
                     <p
-                      className={`mt-3 text-base leading-relaxed ${
+                      className={`mt-3 text-lg leading-relaxed ${
                         plan.featured ? "text-primary-foreground/70" : "text-muted-foreground"
                       }`}
                     >
