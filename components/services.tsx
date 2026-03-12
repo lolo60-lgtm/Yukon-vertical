@@ -104,7 +104,7 @@ export function Services() {
       <div className="bg-foreground py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 text-center">
           <h2 className="font-serif text-3xl font-bold text-primary-foreground sm:text-4xl md:text-5xl uppercase">
-            {"НАШИ УСЛУГИ"}
+            {"Наши услуги"}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-primary-foreground/80 sm:text-lg">
             {"Выберите подходящий курс для получения сертификата КОД 95"}
