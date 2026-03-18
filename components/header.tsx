@@ -74,17 +74,17 @@ export function Header() {
             </span>
             <span className="hidden items-center gap-1 text-foreground sm:flex">
               <Clock className="h-3.5 w-3.5 text-accent" />
-              {"Пн - Пт 09:00 - 18:00"}
+              {"Пн - Пт 09:00 - 16:00"}
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <a href="tel:+48000000000" className="flex items-center gap-1 text-foreground transition-colors hover:text-accent">
+            <a href="tel:+48 452 650 325" className="flex items-center gap-1 text-foreground transition-colors hover:text-accent">
               <Phone className="h-3.5 w-3.5 text-accent" />
-              {"+48 000 000 000"}
+              {"+48 452 650 325"}
             </a>
-            <a href="mailto:yukonkod95@gmail.com" className="hidden items-center gap-1 text-foreground transition-colors hover:text-accent md:flex">
+            <a href="mailto:kod95@yukon.com.pl" className="hidden items-center gap-1 text-foreground transition-colors hover:text-accent md:flex">
               <Mail className="h-3.5 w-3.5 text-accent" />
-              {"yukonkod95@gmail.com"}
+              {"kod95@yukon.com.pl"}
             </a>
           </div>
         </div>
