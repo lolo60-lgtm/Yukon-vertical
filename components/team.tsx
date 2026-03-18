@@ -70,7 +70,7 @@ export function Team() {
         <FadeInSection>
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl md:text-5xl text-balance">
-              {"Ваши менеджеры"}
+              {"Лица компании"}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
               {"Живые люди, которые помогут на каждом шаге"}
