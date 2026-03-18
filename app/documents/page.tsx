@@ -203,7 +203,7 @@ function AccordionList() {
   
   <ChevronDown
     // 2. Жестко прибили стрелку к правому краю (right-4), чтобы она всегда была на одной линии с остальными
-    className={`absolute right-4 top-1/2 -translate-y-1/2 h-6 w-6 text-accent transition-transform duration-300 ${
+    className={`absolute right-2 top-1/2 -translate-y-1/2 h-6 w-6 text-accent transition-transform duration-300 ${
       isOpen ? "rotate-180" : ""
     }`}
   />
