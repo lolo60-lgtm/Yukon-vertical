@@ -169,9 +169,17 @@ function AccordionList() {
   }, [])
 
   function toggle(id: string) {
-    // Если кликнули на уже открытый — закрываем. Иначе — открываем только его.
-    setOpenId((prev) => (prev === id ? null : id))
-  }
+  setOpenId((prev) => (prev === id ? null : id))
+
+  // После смены состояния — скролим к заголовку кликнутой плашки.
+  // setTimeout нужен чтобы дождаться перерисовки DOM после закрытия соседней плашки.
+  setTimeout(() => {
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+  }, 50)
+}
 
   return (
     <div className="flex flex-col gap-4">
