@@ -14,7 +14,7 @@ function renderTitle(title: string) {
     <>
       {parts.map((part, i) =>
         part === "95" ? (
-          <span key={i} className="font-sans font-black">
+          <span key={i} className="font-sans font-normal">
             {part}
           </span>
         ) : (
@@ -58,7 +58,7 @@ export default function KnowledgePage() {
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-5">
-                    <h2 className="font-serif text-lg font-bold leading-snug text-foreground transition-colors group-hover:text-accent">
+                    <h2 className="font-serif text-xl font-bold leading-snug text-foreground transition-colors group-hover:text-accent">
                       {renderTitle(article.title)}
                     </h2>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
