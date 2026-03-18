@@ -63,7 +63,7 @@ function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; del
 
 export function Team() {
   return (
-    <section id="team" className="bg-secondary py-20 md:py-28">
+    <section id="team" className="bg-secondary py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-4">
 
         {/* Header */}
