@@ -6,6 +6,7 @@ import { Info } from "@/components/info"
 import { Pricing } from "@/components/pricing"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
+import { Team } from "@/components/team"
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Services />
         <About />
         <Info />
+        <Team />
         <Pricing />
         <Contact />
       </main>
