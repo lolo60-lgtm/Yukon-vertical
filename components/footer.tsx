@@ -53,11 +53,11 @@ export function Footer() {
                 <span>{"+48 000 000 000"}</span>
               </a>
               <a
-                href="mailto:yukon95@gmail.com"
+                href="mailto:kod95@yukon.com.pl"
                 className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-accent"
               >
                 <Mail className="h-4 w-4 shrink-0 text-accent" />
-                <span>{"yukon95@gmail.com"}</span>
+                <span>{"kod95@yukon.com.pl"}</span>
               </a>
             </div>
           </div>
