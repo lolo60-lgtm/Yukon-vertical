@@ -38,7 +38,7 @@ export function Hero() {
           {"для работы в Европе"}
         </h1>
         <p className="mx-auto mt-6 max-w-2xl font-sans text-lg leading-relaxed text-primary-foreground/90 sm:text-xl">
-          {"Обучение онлайн, всего 1 визит в Краков. Помогаем водителям категории C и D легально работать в Европейском Союзе."}
+          {"Обучение онлайн, всего 1 визит в Краков. Помогаем водителям-дальнобойщикам легально работать в Европейском Союзе."}
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
