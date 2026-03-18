@@ -170,33 +170,14 @@ function AccordionList() {
 
   function toggle(id: string) {
   const el = document.getElementById(id)
-
-  // Шаг 1: запоминаем где плашка находится СЕЙЧАС (до изменений)
-  const rectBefore = el?.getBoundingClientRect().top ?? 0
-
-  // Шаг 2: меняем состояние (соседняя плашка начинает закрываться)
+  
   setOpenId((prev) => (prev === id ? null : id))
 
-  // Шаг 3: ждём два кадра — React перерисует DOM
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      if (!el) return
-
-      // Шаг 4: смотрим куда плашка "уехала" после закрытия соседней
-      const rectAfter = el.getBoundingClientRect().top
-      const delta = rectAfter - rectBefore
-
-      // Шаг 5: мгновенно компенсируем смещение — плашка визуально не прыгает
-      if (Math.abs(delta) > 1) {
-        window.scrollBy({ top: delta, behavior: "instant" })
-      }
-
-      // Шаг 6: плавно подводим плашку к верху экрана
-      setTimeout(() => {
-        el.scrollIntoView({ behavior: "smooth", block: "start" })
-      }, 10)
-    })
-  })
+  // Ждём 520мс — столько длится CSS анимация закрытия (duration-500)
+  // Только после полного завершения анимации скролим к нужной плашке
+  setTimeout(() => {
+    el?.scrollIntoView({ behavior: "smooth", block: "start" })
+  }, 520)
 }
 
   return (
