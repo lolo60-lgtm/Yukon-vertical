@@ -195,7 +195,7 @@ function AccordionList() {
               onClick={() => toggle(section.id)}
               className="flex w-full items-center justify-between gap-4 px-7 py-6 text-left transition-colors hover:bg-secondary/50"
             >
-              <span className="font-serif text-xl font-bold text-foreground sm:text-2xl">
+              <span className="flex-1 font-serif text-xl font-bold text-foreground sm:text-2xl">
                 {section.title}
               </span>
               <ChevronDown
