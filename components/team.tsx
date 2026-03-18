@@ -7,7 +7,7 @@ const managers = [
   {
     name: "Марина",
     role: "Менеджер по легализации",
-    image: "https://i.postimg.cc/52FQ3bTQ/Ava-best-2026.png",
+    image: "https://i.postimg.cc/prTvRQFm/Gemini-Generated-Image-2f35zb2f35zb2f35.png",
     phone: "+48 452 650 325",
     hasInfo: true,
   },
@@ -15,7 +15,7 @@ const managers = [
     name: "",
     role: "",
     // ⬇️ ЗАМЕНИ НА РЕАЛЬНУЮ ССЫЛКУ НА ФОТО ВТОРОГО СОТРУДНИКА
-    image: "PLACEHOLDER_IMAGE_2",
+    image: "https://i.postimg.cc/52FQ3bTQ/Ava-best-2026.png",
     phone: "",
     hasInfo: false,
   },
