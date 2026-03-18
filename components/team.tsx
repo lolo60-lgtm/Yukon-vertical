@@ -7,7 +7,7 @@ const managers = [
   {
     name: "Марина",
     role: "Менеджер по легализации",
-    image: "https://i.postimg.cc/prTvRQFm/Gemini-Generated-Image-2f35zb2f35zb2f35.png",
+    image: "https://i.postimg.cc/XqVPbnt2/IMG-3010.jpg",
     phone: "+48 452 650 325",
     hasInfo: true,
   },
