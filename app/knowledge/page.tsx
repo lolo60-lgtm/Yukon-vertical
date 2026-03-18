@@ -5,7 +5,24 @@ import { articles } from "@/lib/articles"
 
 export const metadata = {
   title: "База знаний — Yukon KOD 95",
-  description: "Полезные статьи о КОД 95, тахографах, работе в Европе и оформлении документов для водителей.",
+  description: "Полезные статьи о КОД 95, работе в Европе и оформлении документов для водителей.",
+}
+
+function renderTitle(title: string) {
+  const parts = title.split(/(95)/g)
+  return (
+    <>
+      {parts.map((part, i) =>
+        part === "95" ? (
+          <span key={i} className="font-sans font-black">
+            {part}
+          </span>
+        ) : (
+          part
+        )
+      )}
+    </>
+  )
 }
 
 export default function KnowledgePage() {
@@ -13,7 +30,6 @@ export default function KnowledgePage() {
     <>
       <Header />
       <main>
-        {/* Hero header */}
         <div className="bg-foreground py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-4 text-center">
             <h1 className="font-serif text-3xl font-bold text-primary-foreground sm:text-4xl md:text-5xl">
@@ -25,7 +41,6 @@ export default function KnowledgePage() {
           </div>
         </div>
 
-        {/* Articles grid */}
         <section className="py-16 md:py-24">
           <div className="mx-auto max-w-7xl px-4">
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -35,7 +50,6 @@ export default function KnowledgePage() {
                   href={`/knowledge/${article.slug}`}
                   className="group flex flex-col overflow-hidden rounded-xl border border-border bg-background shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-xl"
                 >
-                  {/* Image */}
                   <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
                     <img
                       src={article.image}
@@ -43,11 +57,9 @@ export default function KnowledgePage() {
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-
-                  {/* Text */}
                   <div className="flex flex-1 flex-col p-5">
                     <h2 className="font-serif text-lg font-bold leading-snug text-foreground transition-colors group-hover:text-accent">
-                      {article.title}
+                      {renderTitle(article.title)}
                     </h2>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                       {article.excerpt}
