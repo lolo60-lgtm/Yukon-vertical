@@ -192,18 +192,22 @@ function AccordionList() {
             className="scroll-mt-24 overflow-hidden rounded-2xl border border-border bg-background shadow-sm transition-shadow duration-300 hover:shadow-md"
           >
             <button
-              onClick={() => toggle(section.id)}
-              className="flex w-full items-center justify-between gap-4 px-7 py-6 text-left transition-colors hover:bg-secondary/50"
-            >
-              <span className="flex-1 font-serif text-xl font-bold text-foreground sm:text-2xl">
-                {section.title}
-              </span>
-              <ChevronDown
-                className={`h-6 w-6 shrink-0 text-accent transition-transform duration-300 ${
-                  isOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
+  onClick={() => toggle(section.id)}
+  // 1. Добавили relative, убрали justify-between и gap-4
+  className="relative flex w-full items-center px-7 py-6 text-left transition-colors hover:bg-secondary/50"
+>
+  {/* Текст остался ровно таким, как был */}
+  <span className="font-serif text-xl font-bold text-foreground sm:text-2xl">
+    {section.title}
+  </span>
+  
+  <ChevronDown
+    // 2. Жестко прибили стрелку к правому краю (right-7), чтобы она всегда была на одной линии с остальными
+    className={`absolute right-7 top-1/2 -translate-y-1/2 h-6 w-6 text-accent transition-transform duration-300 ${
+      isOpen ? "rotate-180" : ""
+    }`}
+  />
+</button>
 
             <div
               className={`transition-all duration-500 ease-in-out ${
