@@ -7,7 +7,7 @@ const plans = [
   {
     title: "Короткий курс",
     subtitle: "КОД 95",
-    price: "XXX",
+    price: "799",
     currency: "PLN",
     description: "Для водителей с категорией C, выданной до 09.09.2009 года",
     features: [
