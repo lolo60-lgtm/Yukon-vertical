@@ -9,7 +9,7 @@ import { Footer } from "@/components/footer"
 function CertificateImage() {
   const [open, setOpen] = useState(false)
   // ⬇️ ЗАМЕНИ НА РЕАЛЬНУЮ ССЫЛКУ НА ФОТО СЕРТИФИКАТА (например с postimg.cc)
-  const src = "/images/certificate.jpg"
+  const src = "https://i.postimg.cc/LX7WY7Cs/6e4aff91-1.png"
 
   return (
     <>
