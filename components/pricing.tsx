@@ -177,7 +177,7 @@ export function Pricing() {
                     {plan.price ? (
                       <>
                         <span
-                          className={`font-mono text-6xl font-bold ${
+                          className={`font-sans text-6xl font-extrabold ${
                             plan.featured ? "text-primary-foreground" : "text-foreground"
                           }`}
                         >
