@@ -91,7 +91,7 @@ export const articles: Article[] = [
 
 После прохождения курса ваши данные появляются в официальном реестре, а КОД 95 действителен во всех странах ЕС. Никаких рисков.
 
-<div class="my-6 overflow-hidden rounded-xl border border-border shadow-sm" style="max-width:480px"><a href="https://i.postimg.cc/LX7WY7Cs/6e4aff91-1.png" target="_blank" rel="noopener noreferrer" title="Открыть сертификат в полном размере"><img src="https://i.postimg.cc/LX7WY7Cs/6e4aff91-1.png" alt="Сертификат Yukon KOD 95" style="width:100%;height:auto;display:block" /></a></div>
+<div class="my-6 overflow-hidden rounded-xl border border-border shadow-sm" style="max-width:480px"><img src="https://i.postimg.cc/LX7WY7Cs/6e4aff91-1.png" alt="Сертификат Yukon KOD 95" style="width:100%;height:auto;display:block;border-radius:0.75rem" /></div>
 
 <p class="mt-2 text-sm text-muted-foreground">Нажмите на сертификат, чтобы открыть в полном размере</p>
 
