@@ -4,7 +4,9 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { articles, getArticleBySlug } from "@/lib/articles"
 import { ArrowLeft } from "lucide-react"
+import { ArticleBody } from "@/components/article-lightbox"
 
+// ── Нужны для SEO и правильной сборки Next.js — не трогать! ──
 export async function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }))
 }
@@ -19,48 +21,125 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-// Simple markdown-to-HTML renderer (no external dependencies)
-function renderMarkdown(content: string): string {
-  return content
-    .trim()
-    // H2
-    .replace(/^## (.+)$/gm, '<h2 class="font-serif text-2xl font-bold text-foreground mt-10 mb-4 sm:text-3xl">$1</h2>')
-    // H3
-    .replace(/^### (.+)$/gm, '<h3 class="font-serif text-xl font-bold text-foreground mt-8 mb-3">$1</h3>')
-    // Bold
+// ─────────────────────────────────────────────────────────────
+// Markdown → HTML
+// ─────────────────────────────────────────────────────────────
+function applyInline(text: string): string {
+  return text
     .replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-foreground">$1</strong>')
-    // Table rows (simple)
-    .replace(/^\|(.+)\|$/gm, (match) => {
-      const cells = match.split("|").filter(Boolean)
-      const isSeparator = cells.every((c) => c.trim().match(/^-+$/))
-      if (isSeparator) return ""
-      const tag = cells[0]?.trim().match(/^-+$/) ? "td" : "td"
-      return `<tr class="border-b border-border">${cells.map((c) => `<${tag} class="py-2 px-4 text-sm text-muted-foreground">${c.trim()}</${tag}>`).join("")}</tr>`
-    })
-    // Wrap table rows
-    .replace(/((?:<tr[^>]*>.*?<\/tr>\n?)+)/gs, '<div class="my-6 overflow-x-auto rounded-lg border border-border"><table class="w-full"><tbody>$1</tbody></table></div>')
-    // Checkmarks ✅ ❌
-    .replace(/✅ /g, '<span class="text-green-600">✅ </span>')
-    .replace(/❌ /g, '<span class="text-red-500">❌ </span>')
-    // Unordered list items starting with -
-    .replace(/^- (.+)$/gm, '<li class="flex items-start gap-2 text-muted-foreground"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span><span>$1</span></li>')
-    // Ordered list items
-    .replace(/^\d+\. (.+)$/gm, '<li class="flex items-start gap-2 text-muted-foreground"><span class="font-semibold text-accent shrink-0">•</span><span>$1</span></li>')
-    // Wrap consecutive <li> items
-    .replace(/((?:<li[^>]*>.*?<\/li>\n?)+)/gs, '<ul class="my-4 flex flex-col gap-2 pl-2">$1</ul>')
-    // Horizontal rule
-    .replace(/^---$/gm, '<hr class="my-10 border-border" />')
-    // Paragraphs (lines that are not already tags)
-    .split("\n\n")
-    .map((block) => {
-      block = block.trim()
-      if (!block) return ""
-      if (block.startsWith("<")) return block
-      return `<p class="text-base leading-relaxed text-muted-foreground">${block}</p>`
-    })
-    .join("\n")
+    .replace(/\*(.+?)\*/g, "<em>$1</em>")
 }
 
+function renderMarkdown(content: string): string {
+  const lines = content.trim().split("\n")
+  const blocks: string[] = []
+  let i = 0
+
+  while (i < lines.length) {
+    const line = lines[i].trimEnd()
+
+    // Пустая строка
+    if (line === "") { i++; continue }
+
+    // H2
+    if (line.startsWith("## ")) {
+      blocks.push(`<h2 class="font-serif text-2xl font-bold text-foreground mt-10 mb-4 sm:text-3xl">${applyInline(line.slice(3))}</h2>`)
+      i++; continue
+    }
+
+    // H3
+    if (line.startsWith("### ")) {
+      blocks.push(`<h3 class="font-serif text-xl font-bold text-foreground mt-7 mb-3">${applyInline(line.slice(4))}</h3>`)
+      i++; continue
+    }
+
+    // HR
+    if (line === "---") {
+      blocks.push(`<hr class="my-10 border-border" />`)
+      i++; continue
+    }
+
+    // Список через дефис
+    if (line.startsWith("- ")) {
+      const items: string[] = []
+      while (i < lines.length && lines[i].trimEnd().startsWith("- ")) {
+        items.push(`<li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent"></span><span>${applyInline(lines[i].trimEnd().slice(2))}</span></li>`)
+        i++
+      }
+      blocks.push(`<ul class="flex flex-col gap-2 my-4">${items.join("")}</ul>`)
+      continue
+    }
+
+    // ✅ / ❌ — каждая строка отдельно в столбик
+    if (line.startsWith("✅") || line.startsWith("❌")) {
+      const items: string[] = []
+      while (i < lines.length && (lines[i].trimEnd().startsWith("✅") || lines[i].trimEnd().startsWith("❌"))) {
+        const raw = lines[i].trimEnd()
+        const isOk = raw.startsWith("✅")
+        const text = applyInline(raw.replace(/^[✅❌]\s*/, ""))
+        const icon = isOk
+          ? `<span class="shrink-0 text-lg leading-tight">✅</span>`
+          : `<span class="shrink-0 text-lg leading-tight">❌</span>`
+        items.push(`<li class="flex items-start gap-3">${icon}<span class="text-muted-foreground">${text}</span></li>`)
+        i++
+      }
+      blocks.push(`<ul class="flex flex-col gap-2 my-4">${items.join("")}</ul>`)
+      continue
+    }
+
+    // HTML блоки (сертификат и т.д.) — добавляем data-zoomable к img
+    if (line.startsWith("<")) {
+      let html = ""
+      while (i < lines.length && lines[i].trimEnd() !== "") {
+        html += lines[i] + "\n"
+        i++
+      }
+      // Добавляем атрибут для лайтбокса ко всем img
+      html = html.replace(/<img /g, '<img data-zoomable="true" ')
+      blocks.push(html.trim())
+      continue
+    }
+
+    // Таблица
+    if (line.startsWith("|")) {
+      const rows: string[] = []
+      let isHeader = true
+      while (i < lines.length && lines[i].trimEnd().startsWith("|")) {
+        const row = lines[i].trimEnd()
+        if (/^\|[-\s|]+\|$/.test(row)) { i++; isHeader = false; continue }
+        const cells = row.split("|").filter((_, idx, arr) => idx > 0 && idx < arr.length - 1)
+        if (isHeader) {
+          rows.push(`<tr>${cells.map(c => `<th class="py-3 px-4 text-sm font-semibold text-foreground bg-secondary text-left">${c.trim()}</th>`).join("")}</tr>`)
+          isHeader = false
+        } else {
+          rows.push(`<tr class="border-t border-border">${cells.map(c => `<td class="py-3 px-4 text-sm text-muted-foreground">${c.trim()}</td>`).join("")}</tr>`)
+        }
+        i++
+      }
+      blocks.push(`<div class="my-6 overflow-x-auto rounded-xl border border-border"><table class="w-full">${rows.join("")}</table></div>`)
+      continue
+    }
+
+    // Обычные абзацы — **Схема X** и **Шаг X** разбиваем на отдельные блоки
+    {
+      const paragraphLines: string[] = []
+      while (i < lines.length && lines[i].trimEnd() !== "") {
+        const cur = lines[i].trimEnd()
+        if (paragraphLines.length > 0 && /^\*\*(Схема|Шаг)\s/.test(cur)) break
+        paragraphLines.push(cur)
+        i++
+        if (i < lines.length && /^\*\*(Схема|Шаг)\s/.test(lines[i].trimEnd())) break
+      }
+      blocks.push(`<p class="text-base leading-relaxed text-muted-foreground">${applyInline(paragraphLines.join(" "))}</p>`)
+    }
+  }
+
+  return blocks.join("\n")
+}
+
+// ─────────────────────────────────────────────────────────────
+// Страница — серверный компонент (хорошо для SEO)
+// ─────────────────────────────────────────────────────────────
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const article = getArticleBySlug(slug)
@@ -90,7 +169,6 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         {/* Content */}
         <section className="py-12 md:py-16">
           <div className="mx-auto max-w-3xl px-4">
-            {/* Back link */}
             <Link
               href="/knowledge"
               className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent/80"
@@ -99,13 +177,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               {"Назад к базе знаний"}
             </Link>
 
-            {/* Article body */}
-            <div
-              className="mt-6"
-              dangerouslySetInnerHTML={{ __html: htmlContent }}
-            />
+            {/* ArticleBody — клиентский компонент с лайтбоксом */}
+            <ArticleBody html={htmlContent} />
 
-            {/* CTA block */}
+            {/* CTA */}
             <div className="mt-12 rounded-2xl bg-foreground p-8 text-center">
               <h3 className="font-serif text-2xl font-bold text-primary-foreground">
                 {"Нужна помощь с оформлением?"}
