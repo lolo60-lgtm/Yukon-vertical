@@ -23,7 +23,7 @@ const managers = [
     name: "",
     role: "",
     // ⬇️ ЗАМЕНИ НА РЕАЛЬНУЮ ССЫЛКУ НА ФОТО ТРЕТЬЕГО СОТРУДНИКА
-    image: "PLACEHOLDER_IMAGE_3",
+    image: "https://i.postimg.cc/YqrDSPFF/Gemini-Generated-Image-4nmhfr4nmhfr4nmh.png",
     phone: "",
     hasInfo: false,
   },
