@@ -5,7 +5,7 @@ import { Shield, Users, Award, Headphones } from "lucide-react"
 
 const stats = [
   { icon: Shield, value: "100%", label: "Легальное оформление" },
-  { icon: Users, value: "500+", label: "Довольных клиентов" },
+  { icon: Users, value: "2500+", label: "Довольных клиентов" },
   { icon: Award, value: "5 лет", label: "Опыта работы" },
   { icon: Headphones, value: "24/7", label: "Поддержка" },
 ]
