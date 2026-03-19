@@ -53,8 +53,12 @@ export function ArticleBody({ html }: { html: string }) {
 
     imgs.forEach((img) => {
       img.style.cursor = "zoom-in"
-      const handler = () => setLightboxSrc(img.src)
-      img.addEventListener("click", handler)
+      const handler = (e: MouseEvent) => {
+  e.preventDefault()
+  e.stopPropagation()
+  setLightboxSrc(img.src)
+}
+img.addEventListener("click", handler)
       cleanups.push(() => img.removeEventListener("click", handler))
     })
 
