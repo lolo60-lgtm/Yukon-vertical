@@ -1,11 +1,12 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
 import { Shield, Users, Award, Headphones } from "lucide-react"
 
 const stats = [
   { icon: Shield, value: "100%", label: "Легальное оформление" },
-  { icon: Users, value: "2500+", label: "Довольных клиентов" },
+  { icon: Users, value: "500+", label: "Довольных клиентов" },
   { icon: Award, value: "5 лет", label: "Опыта работы" },
   { icon: Headphones, value: "24/7", label: "Поддержка" },
 ]
@@ -44,18 +45,18 @@ function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; del
 
 export function About() {
   return (
-    <section id="about" className="bg-secondary py-20 md:py-28">
+    <section id="about" className="bg-secondary pt-10 pb-20 md:pt-14 md:pb-28">
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Image side */}
           <FadeInSection>
             <div className="relative overflow-hidden rounded-2xl shadow-lg">
-              <img
-                src="https://i.postimg.cc/cCShGFSH/%D0%9D%D0%BE%D0%BC%D0%B5%D1%80_1.jpg"
+              <Image
+                src="/images/krakow.jpg"
                 alt="Краков, Польша - город где базируется Yukon KOD 95"
-                className="h-auto w-full object-cover"
                 width={700}
                 height={470}
+                className="h-auto w-full object-cover"
               />
             </div>
           </FadeInSection>
