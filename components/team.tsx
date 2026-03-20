@@ -7,57 +7,38 @@ const managers = [
   {
     name: "Марина",
     role: "Менеджер",
-    image: "https://i.postimg.cc/52FQ3bTQ/Ava-best-2026.png",
+    image: "https://i.postimg.cc/1z86rzMm/IMG-3010.jpg",
     phone: "+48 452 650 325",
-    hasInfo: true,
   },
   {
     name: "Никита",
     role: "Менеджер",
-    // ⬇️ ЗАМЕНИ НА РЕАЛЬНУЮ ССЫЛКУ НА ФОТО
-    image: "PLACEHOLDER_IMAGE_2",
+    image: "https://i.postimg.cc/tg86SHMp/Ava-best-2026.png",
     phone: "",
-    hasInfo: true,
-    phoneVisible: false,
   },
   {
     name: "Анастасия",
     role: "Менеджер",
-    // ⬇️ ЗАМЕНИ НА РЕАЛЬНУЮ ССЫЛКУ НА ФОТО
-    image: "PLACEHOLDER_IMAGE_3",
+    image: "https://i.postimg.cc/nrJDxGxv/BEST-b2f35zb2f35.png",
     phone: "",
-    hasInfo: true,
-    phoneVisible: false,
   },
 ]
 
 function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
-
   useEffect(() => {
     const el = ref.current
     if (!el) return
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), delay)
-          observer.unobserve(el)
-        }
-      },
+      ([entry]) => { if (entry.isIntersecting) { setTimeout(() => setVisible(true), delay); observer.unobserve(el) } },
       { threshold: 0.15 }
     )
     observer.observe(el)
     return () => observer.disconnect()
   }, [delay])
-
   return (
-    <div
-      ref={ref}
-      className={`h-full transition-all duration-700 ease-out ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-      }`}
-    >
+    <div ref={ref} className={`h-full transition-all duration-700 ease-out ${visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
       {children}
     </div>
   )
@@ -65,11 +46,9 @@ function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; del
 
 export function Team() {
   return (
-    // py уменьшены чтобы не было лишних пробелов между блоками
     <section id="team" className="bg-secondary py-14 md:py-20">
       <div className="mx-auto max-w-7xl px-4">
 
-        {/* Заголовок */}
         <FadeInSection>
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl md:text-5xl text-balance">
@@ -81,7 +60,6 @@ export function Team() {
           </div>
         </FadeInSection>
 
-        {/* Карточки */}
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
           {managers.map((manager, i) => (
             <FadeInSection key={i} delay={i * 120}>
@@ -89,30 +67,21 @@ export function Team() {
 
                 {/* Фото */}
                 <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
-                  {manager.image.startsWith("PLACEHOLDER") ? (
-                    <div className="flex h-full w-full items-center justify-center bg-accent/5">
-                      <span className="text-base text-muted-foreground">{"Фото скоро"}</span>
-                    </div>
-                  ) : (
-                    <img
-                      src={manager.image}
-                      alt={manager.name}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  )}
+                  <img
+                    src={manager.image}
+                    alt={manager.name}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
 
-                {/* Информация — у всех троих */}
+                {/* Имя и должность — увеличенный текст */}
                 <div className="flex flex-col items-center gap-3 p-6 text-center">
                   <div>
-                    <h3 className="font-serif text-2xl font-bold text-foreground">
-                      {manager.name}
-                    </h3>
-                    <p className="mt-1.5 text-base text-muted-foreground">
-                      {manager.role}
-                    </p>
+                    {/* Увеличено: text-2xl → text-3xl */}
+                    <h3 className="font-serif text-3xl font-bold text-foreground">{manager.name}</h3>
+                    {/* Увеличено: text-base → text-lg */}
+                    <p className="mt-2 text-lg text-muted-foreground">{manager.role}</p>
                   </div>
-                  {/* Телефон только у Марины */}
                   {manager.phone && (
                     <a
                       href={`tel:${manager.phone.replace(/\s/g, "")}`}
