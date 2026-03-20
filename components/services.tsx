@@ -45,20 +45,16 @@ const services = [
 function AnimatedCard({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
-
   useEffect(() => {
     const el = ref.current
     if (!el) return
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) { setTimeout(() => setVisible(true), delay); observer.unobserve(el) }
-      },
+      ([entry]) => { if (entry.isIntersecting) { setTimeout(() => setVisible(true), delay); observer.unobserve(el) } },
       { threshold: 0.15 }
     )
     observer.observe(el)
     return () => observer.disconnect()
   }, [delay])
-
   return (
     <div ref={ref} className={`h-full transition-all duration-700 ease-out ${visible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
       {children}
@@ -68,21 +64,17 @@ function AnimatedCard({ children, delay = 0 }: { children: React.ReactNode; dela
 
 export function Services() {
   return (
-    <section id="services" className="pb-0 pt-0 md:pb-0 md:pt-0">
+    <section id="services">
       <style>{`
-        @keyframes breathe {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.06); }
-        }
-        @media (max-width: 1023px) {
-          .btn-breathe { animation: breathe 2.4s ease-in-out infinite; }
-        }
-        @media (min-width: 1024px) {
-          .btn-breathe { animation: none !important; }
-        }
+        @keyframes breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+        @media(max-width:1023px){.btn-breathe{animation:breathe 2.4s ease-in-out infinite}}
+        @media(min-width:1024px){.btn-breathe{animation:none!important}}
       `}</style>
 
-      {/* Шапка секции */}
+      {/* Белая полоска над тёмным блоком — pt-10 = половина от стандартного py-20 */}
+      <div className="bg-background pt-10 md:pt-12" />
+
+      {/* Тёмная шапка */}
       <div className="bg-foreground py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 text-center">
           <h2 className="font-serif text-3xl font-bold text-primary-foreground sm:text-4xl md:text-5xl">{"Наши услуги"}</h2>
@@ -90,7 +82,8 @@ export function Services() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 py-14 md:py-20">
+      {/* Контент */}
+      <div className="mx-auto max-w-7xl px-4 pb-14 pt-14 md:pb-20 md:pt-14">
         {/* Основные курсы */}
         <div className="grid gap-8 md:grid-cols-2 items-stretch">
           {services.filter((s) => s.featured).map((service, i) => (
@@ -102,31 +95,24 @@ export function Services() {
                 </div>
                 <div className="flex flex-1 flex-col items-center justify-between gap-4 p-6 text-center">
                   <div className="flex flex-col items-center gap-3">
-                    {/* Увеличенный заголовок курса */}
                     <h3 className="font-serif text-3xl font-bold text-card-foreground sm:text-4xl">{service.title}</h3>
-                    {/* Увеличенный текст описания */}
                     <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">{service.description}</p>
                     <Globe className="h-8 w-8 text-foreground/50 transition-transform duration-300 group-hover:scale-105" />
                   </div>
                   <div className="flex flex-wrap justify-center gap-3">
                     {service.available !== false ? (
                       <>
-                        <a href="#contact"
-                          className="btn-breathe rounded-lg px-6 py-3 text-base font-semibold text-white bg-accent transition-all duration-200 hover:scale-105 hover:bg-foreground hover:shadow-lg">
+                        <a href="#contact" className="btn-breathe rounded-lg px-6 py-3 text-base font-semibold text-white bg-accent transition-all duration-200 hover:scale-105 hover:bg-foreground hover:shadow-lg">
                           {"Записаться на курс"}
                         </a>
-                        <a href="/knowledge/kak-prohodit-obuchenie"
-                          className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
+                        <a href="/knowledge/kak-prohodit-obuchenie" className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
                           {"Выбрать курс"}
                         </a>
                       </>
                     ) : (
                       <>
-                        <button disabled className="cursor-not-allowed rounded-lg border-2 border-gray-300 bg-gray-100 px-6 py-3 text-base font-semibold text-gray-400">
-                          {"Пока недоступен"}
-                        </button>
-                        <a href="/knowledge/kak-prohodit-obuchenie"
-                          className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
+                        <button disabled className="cursor-not-allowed rounded-lg border-2 border-gray-300 bg-gray-100 px-6 py-3 text-base font-semibold text-gray-400">{"Пока недоступен"}</button>
+                        <a href="/knowledge/kak-prohodit-obuchenie" className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
                           {"Выбрать курс"}
                         </a>
                       </>
@@ -138,7 +124,7 @@ export function Services() {
           ))}
         </div>
 
-        {/* Доп. услуги — увеличенный текст */}
+        {/* Доп. услуги */}
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.filter((s) => !s.featured).map((service, i) => {
             const Icon = service.icon
@@ -148,9 +134,7 @@ export function Services() {
                   <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent/10 transition-transform duration-300 group-hover:scale-105">
                     <Icon className="h-8 w-8 text-accent" />
                   </div>
-                  {/* Увеличенный заголовок карточки */}
                   <h3 className="font-serif text-xl font-bold text-foreground">{service.title}</h3>
-                  {/* Увеличенный текст */}
                   <p className="mt-2 text-base leading-relaxed text-muted-foreground">{service.description}</p>
                 </div>
               </AnimatedCard>
@@ -158,10 +142,9 @@ export function Services() {
           })}
         </div>
 
-        {/* Кнопка консультации — меньше отступ снизу, чтобы органично врезалась между блоками */}
-        <div className="mt-14 flex justify-center">
-          <a href="#contact"
-            className="btn-breathe rounded-xl px-10 py-4 text-base font-semibold text-white bg-accent shadow-md transition-all duration-200 hover:scale-105 hover:bg-foreground hover:shadow-xl">
+        {/* Кнопка консультации — симметричные отступы сверху и снизу */}
+        <div className="mt-14 mb-14 flex justify-center">
+          <a href="#contact" className="btn-breathe rounded-xl px-10 py-4 text-base font-semibold text-white bg-accent shadow-md transition-all duration-200 hover:scale-105 hover:bg-foreground hover:shadow-xl">
             {"Получить бесплатную консультацию"}
           </a>
         </div>
