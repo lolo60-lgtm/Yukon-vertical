@@ -18,13 +18,16 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [scrollY, setScrollY] = useState(0)
+  const [topBarVisible, setTopBarVisible] = useState(true)
   const pathname = usePathname()
   const isHome = pathname === "/"
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
-      setScrollY(window.scrollY)
+      const y = window.scrollY
+      setScrolled(y > 10)
+      setScrollY(y)
+      setTopBarVisible(y < 10)
     }
     window.addEventListener("scroll", handleScroll, { passive: true })
     handleScroll()
@@ -41,9 +44,7 @@ export function Header() {
     const anchor = href.startsWith("/") ? href.slice(1) : href
     if (isHome) {
       const target = document.querySelector(anchor)
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" })
-      }
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" })
     } else {
       window.location.href = href
     }
@@ -51,9 +52,7 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-shadow duration-300 ${
-        scrolled ? "shadow-md" : "shadow-none"
-      }`}
+      className={`sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? "shadow-md" : "shadow-none"}`}
       style={{
         backgroundColor: `rgba(255, 255, 255, ${bgOpacity})`,
         backdropFilter: `blur(${blurAmount}px) saturate(180%)`,
@@ -61,10 +60,15 @@ export function Header() {
         transition: "background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease",
       }}
     >
-      {/* Top bar — только десктоп */}
+      {/* Top bar — только десктоп, прячется при скролле */}
       <div
-        className="hidden border-b border-border/60 sm:block"
-        style={{ backgroundColor: `rgba(245, 245, 245, ${bgOpacity * 0.6})` }}
+        className="hidden sm:block overflow-hidden border-b border-border/60"
+        style={{
+          maxHeight: topBarVisible ? "48px" : "0px",
+          opacity: topBarVisible ? 1 : 0,
+          transition: "max-height 0.35s ease, opacity 0.25s ease",
+          backgroundColor: `rgba(245, 245, 245, 0.9)`,
+        }}
       >
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs sm:text-sm">
           <div className="flex flex-wrap items-center gap-4">
@@ -78,7 +82,7 @@ export function Header() {
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <a href="tel:+48 452 650 325" className="flex items-center gap-1 text-foreground transition-colors hover:text-accent">
+            <a href="tel:+48452650325" className="flex items-center gap-1 text-foreground transition-colors hover:text-accent">
               <Phone className="h-3.5 w-3.5 text-accent" />
               {"+48 452 650 325"}
             </a>
@@ -109,9 +113,7 @@ export function Header() {
               </a>
             ) : (
               <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}
-                className={`font-sans text-sm font-medium transition-colors hover:text-accent ${
-                  pathname.startsWith(link.href) ? "text-accent" : "text-foreground"
-                }`}>
+                className={`font-sans text-sm font-medium transition-colors hover:text-accent ${pathname.startsWith(link.href) ? "text-accent" : "text-foreground"}`}>
                 {link.label}
               </Link>
             )
@@ -119,8 +121,7 @@ export function Header() {
         </nav>
 
         <button onClick={() => setMobileOpen(!mobileOpen)}
-          className="rounded-md p-2 text-foreground transition-colors hover:bg-secondary lg:hidden"
-          aria-label="Toggle menu">
+          className="rounded-md p-2 text-foreground transition-colors hover:bg-secondary lg:hidden" aria-label="Toggle menu">
           {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
