@@ -196,8 +196,11 @@ export function Contact() {
                   className="flex items-center gap-2 rounded-lg bg-primary-foreground/10 px-4 py-2 text-sm font-medium text-primary-foreground/70 transition-all hover:scale-105 hover:bg-accent hover:text-accent-foreground">
                   <Instagram className="h-4 w-4" />{"Instagram"}
                 </a>
-                <a href="#"
-                  className="flex items-center gap-2 rounded-lg bg-primary-foreground/10 px-4 py-2 text-sm font-medium text-primary-foreground/70 transition-all hover:scale-105 hover:bg-accent hover:text-accent-foreground">
+                <a href="https://t.me/MarynaKod95"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-2 rounded-lg bg-primary-foreground/10 px-4 py-2 text-sm font-medium text-primary-foreground/70 transition-all hover:scale-105 hover:bg-accent hover:text-accent-foreground"
+>
                   <MessageCircle className="h-4 w-4" />{"Telegram"}
                 </a>
                 <a href={`https://wa.me/${CONTACT_PHONE.replace(/[\s+]/g, "")}`} target="_blank" rel="noopener noreferrer"
