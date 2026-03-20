@@ -60,14 +60,14 @@ export function Header() {
         transition: "background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease",
       }}
     >
-      {/* Top bar — только десктоп, прячется при скролле */}
+      {/* Top bar — только десктоп, скрывается при скролле */}
       <div
         className="hidden sm:block overflow-hidden border-b border-border/60"
         style={{
           maxHeight: topBarVisible ? "48px" : "0px",
           opacity: topBarVisible ? 1 : 0,
           transition: "max-height 0.35s ease, opacity 0.25s ease",
-          backgroundColor: `rgba(245, 245, 245, 0.9)`,
+          backgroundColor: "rgba(245, 245, 245, 0.9)",
         }}
       >
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs sm:text-sm">
