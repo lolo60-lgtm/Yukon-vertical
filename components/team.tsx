@@ -6,26 +6,28 @@ import { Phone } from "lucide-react"
 const managers = [
   {
     name: "Марина",
-    role: "Менеджер по легализации",
-    image: "https://i.postimg.cc/XqVPbnt2/IMG-3010.jpg",
+    role: "Менеджер",
+    image: "https://i.postimg.cc/52FQ3bTQ/Ava-best-2026.png",
     phone: "+48 452 650 325",
     hasInfo: true,
   },
   {
-    name: "",
-    role: "",
-    // ⬇️ ЗАМЕНИ НА РЕАЛЬНУЮ ССЫЛКУ НА ФОТО ВТОРОГО СОТРУДНИКА
-    image: "https://i.postimg.cc/52FQ3bTQ/Ava-best-2026.png",
+    name: "Никита",
+    role: "Менеджер",
+    // ⬇️ ЗАМЕНИ НА РЕАЛЬНУЮ ССЫЛКУ НА ФОТО
+    image: "PLACEHOLDER_IMAGE_2",
     phone: "",
-    hasInfo: false,
+    hasInfo: true,
+    phoneVisible: false,
   },
   {
-    name: "",
-    role: "",
-    // ⬇️ ЗАМЕНИ НА РЕАЛЬНУЮ ССЫЛКУ НА ФОТО ТРЕТЬЕГО СОТРУДНИКА
-    image: "https://i.postimg.cc/GhzLB65w/BEST-b2f35zb2f35.png",
+    name: "Анастасия",
+    role: "Менеджер",
+    // ⬇️ ЗАМЕНИ НА РЕАЛЬНУЮ ССЫЛКУ НА ФОТО
+    image: "PLACEHOLDER_IMAGE_3",
     phone: "",
-    hasInfo: false,
+    hasInfo: true,
+    phoneVisible: false,
   },
 ]
 
@@ -63,14 +65,15 @@ function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; del
 
 export function Team() {
   return (
-    <section id="team" className="bg-secondary py-12 md:py-16">
+    // py уменьшены чтобы не было лишних пробелов между блоками
+    <section id="team" className="bg-secondary py-14 md:py-20">
       <div className="mx-auto max-w-7xl px-4">
 
-        {/* Header */}
+        {/* Заголовок */}
         <FadeInSection>
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl md:text-5xl text-balance">
-              {"Лица компании"}
+              {"Ваши менеджеры"}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
               {"Живые люди, которые помогут на каждом шаге"}
@@ -78,48 +81,48 @@ export function Team() {
           </div>
         </FadeInSection>
 
-        {/* Cards grid */}
+        {/* Карточки */}
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
           {managers.map((manager, i) => (
             <FadeInSection key={i} delay={i * 120}>
               <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-2xl">
 
-                {/* Photo */}
+                {/* Фото */}
                 <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
                   {manager.image.startsWith("PLACEHOLDER") ? (
-                    // Заглушка пока нет фото
                     <div className="flex h-full w-full items-center justify-center bg-accent/5">
-                      <span className="text-sm text-muted-foreground">{"Фото скоро"}</span>
+                      <span className="text-base text-muted-foreground">{"Фото скоро"}</span>
                     </div>
                   ) : (
                     <img
                       src={manager.image}
-                      alt={manager.name || "Менеджер"}
+                      alt={manager.name}
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   )}
                 </div>
 
-                {/* Info — только для первой карточки */}
-                {manager.hasInfo && (
-                  <div className="flex flex-col items-center gap-3 p-5 text-center">
-                    <div>
-                      <h3 className="font-serif text-xl font-bold text-foreground">
-                        {manager.name}
-                      </h3>
-                      <p className="mt-1 text-sm text-muted-foreground">
-                        {manager.role}
-                      </p>
-                    </div>
+                {/* Информация — у всех троих */}
+                <div className="flex flex-col items-center gap-3 p-6 text-center">
+                  <div>
+                    <h3 className="font-serif text-2xl font-bold text-foreground">
+                      {manager.name}
+                    </h3>
+                    <p className="mt-1.5 text-base text-muted-foreground">
+                      {manager.role}
+                    </p>
+                  </div>
+                  {/* Телефон только у Марины */}
+                  {manager.phone && (
                     <a
                       href={`tel:${manager.phone.replace(/\s/g, "")}`}
-                      className="mt-1 flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-4 py-3 text-sm font-semibold text-white transition-all hover:scale-105 hover:bg-accent/90"
+                      className="mt-1 flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-4 py-3 text-base font-semibold text-white transition-all hover:scale-105 hover:bg-accent/90"
                     >
-                      <Phone className="h-4 w-4" />
+                      <Phone className="h-5 w-5" />
                       {manager.phone}
                     </a>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </FadeInSection>
           ))}
