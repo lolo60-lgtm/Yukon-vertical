@@ -4,9 +4,10 @@ import { Services } from "@/components/services"
 import { About } from "@/components/about"
 import { Info } from "@/components/info"
 import { Pricing } from "@/components/pricing"
+import { Team } from "@/components/team"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
-import { Team } from "@/components/team"
+import { FloatingButtons } from "@/components/floating-buttons"
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <FloatingButtons />
     </>
   )
 }
