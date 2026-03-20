@@ -340,6 +340,8 @@ export const articles: Article[] = [
 ---
 
 Готовы начать? Напишите нам — ответим в течение нескольких часов.
+
+<div class="mt-8 text-center"><a href="/#contact" class="inline-flex items-center justify-center rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all hover:bg-foreground hover:scale-105 hover:shadow-xl">Записаться на курс</a></div>
 `,
   },
   {
