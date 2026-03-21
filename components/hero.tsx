@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react"
 import { ChevronDown } from "lucide-react"
-import { openLeadModal } from "@/components/lead-modal"
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null)
@@ -12,6 +11,13 @@ export function Hero() {
     if (!el) return
     el.classList.add("opacity-100", "translate-y-0")
   }, [])
+
+  function handleClick() {
+    // Динамический импорт чтобы избежать SSR проблем
+    import("@/components/lead-modal").then(({ openLeadModal }) => {
+      openLeadModal()
+    })
+  }
 
   return (
     <section id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden">
@@ -38,7 +44,7 @@ export function Hero() {
 
         <div className="mt-10 flex justify-center">
           <button
-            onClick={openLeadModal}
+            onClick={handleClick}
             className="rounded-lg bg-[#4689e1] px-14 py-4 font-sans text-base font-semibold text-white transition-all hover:scale-105 hover:bg-[#3670c2]"
           >
             {"Записаться на курс"}
