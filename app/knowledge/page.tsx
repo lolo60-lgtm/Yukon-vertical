@@ -14,7 +14,7 @@ function renderTitle(title: string) {
     <>
       {parts.map((part, i) =>
         part === "95" ? (
-          <span key={i} className="font-sans font-black">
+          <span key={i} className="font-sans font-semibold">
             {part}
           </span>
         ) : (
