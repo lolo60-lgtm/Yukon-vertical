@@ -8,7 +8,7 @@ const PHONE = "+48452650325"
 const PHONE_DISPLAY = "+48 452 650 325"
 const WHATSAPP = "https://wa.me/48452650325"
 const TELEGRAM = "https://t.me/MarynaKod95"
-const VIBER = "viber://chat?number=48452650325"
+const VIBER = "viber://chat?number=%2B48452650325"
 const INSTAGRAM = "https://www.instagram.com/yukon_kod_95/"
 
 // Все кнопки одного голубого цвета, при hover — темнее
