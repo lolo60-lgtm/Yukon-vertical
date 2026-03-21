@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { BookOpen, GraduationCap, CreditCard, FileText, Globe, IdCard } from "lucide-react"
+import { openLeadModal } from "@/components/lead-modal"
 
 const services = [
   {
@@ -71,10 +72,8 @@ export function Services() {
         @media(min-width:1024px){.btn-breathe{animation:none!important}}
       `}</style>
 
-      {/* Белая полоска над тёмным блоком — pt-10 = половина от стандартного py-20 */}
       <div className="bg-background pt-10 md:pt-12" />
 
-      {/* Тёмная шапка */}
       <div className="bg-foreground py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 text-center">
           <h2 className="font-serif text-5xl font-bold text-primary-foreground">{"Наши услуги"}</h2>
@@ -82,7 +81,6 @@ export function Services() {
         </div>
       </div>
 
-      {/* Контент */}
       <div className="mx-auto max-w-7xl px-4 pb-14 pt-14 md:pb-20 md:pt-14">
         {/* Основные курсы */}
         <div className="grid gap-8 md:grid-cols-2 items-stretch">
@@ -102,16 +100,24 @@ export function Services() {
                   <div className="flex flex-wrap justify-center gap-3">
                     {service.available !== false ? (
                       <>
-                        <button onClick={() => openLeadModal()} className="$1">
-                          {"Записаться на курс"}</button>
-                        <a href="/knowledge/kak-prohodit-obuchenie" className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
+                        <button
+                          onClick={() => openLeadModal()}
+                          className="btn-breathe rounded-lg px-6 py-3 text-base font-semibold text-white bg-accent transition-all duration-200 hover:scale-105 hover:bg-foreground hover:shadow-lg"
+                        >
+                          {"Записаться на курс"}
+                        </button>
+                        <a href="/knowledge/kak-prohodit-obuchenie"
+                          className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
                           {"Выбрать курс"}
                         </a>
                       </>
                     ) : (
                       <>
-                        <button disabled className="cursor-not-allowed rounded-lg border-2 border-gray-300 bg-gray-100 px-6 py-3 text-base font-semibold text-gray-400">{"Пока недоступен"}</button>
-                        <a href="/knowledge/kak-prohodit-obuchenie" className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
+                        <button disabled className="cursor-not-allowed rounded-lg border-2 border-gray-300 bg-gray-100 px-6 py-3 text-base font-semibold text-gray-400">
+                          {"Пока недоступен"}
+                        </button>
+                        <a href="/knowledge/kak-prohodit-obuchenie"
+                          className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
                           {"Выбрать курс"}
                         </a>
                       </>
@@ -141,10 +147,14 @@ export function Services() {
           })}
         </div>
 
-        {/* Кнопка консультации — симметричные отступы сверху и снизу */}
+        {/* Кнопка консультации */}
         <div className="mt-14 mb-14 flex justify-center">
-          <button onClick={() => openLeadModal()} className="$1">
-                          {"Получить бесплатную консультацию"}</button>
+          <button
+            onClick={() => openLeadModal()}
+            className="btn-breathe rounded-xl px-10 py-4 text-base font-semibold text-white bg-accent shadow-md transition-all duration-200 hover:scale-105 hover:bg-foreground hover:shadow-xl"
+          >
+            {"Получить бесплатную консультацию"}
+          </button>
         </div>
       </div>
     </section>
