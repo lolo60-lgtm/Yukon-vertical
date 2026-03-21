@@ -11,7 +11,7 @@ const VIBER = "viber://chat?number=48452650325"
 const INSTAGRAM = "https://www.instagram.com/yukon_kod_95/"
 
 // Все кнопки одного голубого цвета, при hover — темнее
-const BTN_BASE = "bg-accent hover:bg-[#3670c2]"
+const BTN_BASE = "bg-accent hover:bg-foreground"
 
 const socialButtons = [
   {
@@ -108,7 +108,7 @@ export function Contact() {
         {/* Заголовок */}
         <FadeInSection>
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-serif text-3xl font-bold text-primary-foreground sm:text-4xl md:text-5xl text-balance">
+            <h2 className="font-serif text-4xl font-bold text-primary-foreground md:text-5xl text-balance">
               {"Остались вопросы?"}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-primary-foreground/70 sm:text-lg">
