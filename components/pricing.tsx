@@ -1,5 +1,7 @@
 "use client"
 
+import { openLeadModal } from "@/components/lead-modal"
+
 import { useEffect, useRef, useState } from "react"
 import { Check, Clock } from "lucide-react"
 
@@ -181,13 +183,13 @@ export function Pricing() {
 
                   <div className="mt-8">
                     {plan.available ? (
-                      <a href="#contact" className={`flex w-full items-center justify-center rounded-lg px-6 py-4 text-base font-semibold transition-all hover:scale-105 ${
+                      <button onClick={openLeadModal} className={`flex w-full items-center justify-center rounded-lg px-6 py-4 text-base font-semibold transition-all hover:scale-105 ${
                         plan.featured
                           ? "bg-accent text-white hover:bg-accent/90"
                           : "border-2 border-accent bg-transparent text-accent hover:bg-accent hover:text-white"
                       }`}>
                         {plan.cta}
-                      </a>
+                      </button>
                     ) : (
                       <button disabled className="flex w-full cursor-not-allowed items-center justify-center rounded-lg border-2 border-muted bg-muted/50 px-6 py-4 text-base font-semibold text-muted-foreground">
                         {plan.cta}
