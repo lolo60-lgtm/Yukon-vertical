@@ -32,7 +32,7 @@ export default function KnowledgePage() {
       <main>
         <div className="bg-foreground py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-4 text-center">
-            <h1 className="font-serif text-4xl font-bold text-primary-foreground md:text-5xl">
+            <h1 className="font-serif text-5xl font-bold text-primary-foreground">
               {"База знаний"}
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-primary-foreground/80 sm:text-lg">
