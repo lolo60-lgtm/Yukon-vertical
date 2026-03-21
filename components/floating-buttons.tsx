@@ -7,8 +7,8 @@ const PHONE = "+48452650325"
 const PHONE_DISPLAY = "+48 452 650 325"
 const TELEGRAM = "https://t.me/MarynaKod95"
 const WHATSAPP = "https://wa.me/48452650325"
-// Viber deep link — открывает приложение Viber с нужным номером
-const VIBER = "viber://chat?number=48452650325"
+// Viber: правильный формат deep link
+const VIBER = "viber://chat?number=%2B48452650325"
 
 export function FloatingButtons() {
   const [chatOpen, setChatOpen] = useState(false)
@@ -26,13 +26,15 @@ export function FloatingButtons() {
   }, [chatOpen])
 
   return (
-    <div className="fixed bottom-6 right-4 z-[900] flex flex-col items-end gap-3 sm:right-6">
+    // pointer-events-none на контейнере — чтобы НЕ блокировать клики по странице
+    // pointer-events-auto только на реально кликабельных элементах
+    <div className="pointer-events-none fixed bottom-6 right-4 z-[900] flex flex-col items-end gap-3 sm:right-6">
 
       {/* Карточка мессенджеров */}
       <div
         ref={cardRef}
-        className={`mb-1 transition-all duration-300 ease-out ${
-          chatOpen ? "translate-y-0 opacity-100 pointer-events-auto" : "translate-y-4 opacity-0 pointer-events-none"
+        className={`pointer-events-auto transition-all duration-300 ease-out ${
+          chatOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0 pointer-events-none"
         }`}
       >
         <div className="rounded-2xl bg-white p-5 shadow-2xl border border-border w-60">
@@ -69,12 +71,12 @@ export function FloatingButtons() {
               {"WhatsApp"}
             </a>
 
-            {/* Viber — правильный SVG, правильная ссылка */}
+            {/* Viber — только пузырь, без трубки внутри */}
             <a href={VIBER}
               className="flex items-center gap-3 rounded-xl border border-border px-4 py-2.5 text-sm font-medium text-foreground transition-all hover:scale-[1.02] hover:border-accent/30 hover:bg-accent/5">
               <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#7360F2" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                {/* Только форма пузыря Viber, без трубки */}
                 <path d="M12 2C6.5 2 2 6.2 2 11.5c0 2.9 1.4 5.5 3.6 7.2V22l3.6-1.8c.9.2 1.8.3 2.8.3 5.5 0 10-4.3 10-9.5S17.5 2 12 2z" />
-                <path d="M14.5 13.5c-.2-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.2-.7.9-1 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5l-.9-2c-.2-.5-.5-.4-.7-.4-.2 0-.4 0-.6.1-.5.2-1.3.8-1.3 1.9 0 1.1.8 2.7 2.1 4.2 1.8 2.1 3.5 2.8 5.3 3.3 1 .3 1.8.2 2.4-.2.7-.4 1.2-1.1 1.3-1.7.1-.5-.1-.7-.6-.9z" />
               </svg>
               {"Viber"}
             </a>
@@ -89,8 +91,8 @@ export function FloatingButtons() {
         </div>
       </div>
 
-      {/* Плавающие кнопки */}
-      <div className="flex flex-col items-center gap-2.5">
+      {/* Кнопки — pointer-events-auto явно */}
+      <div className="pointer-events-auto flex flex-col items-center gap-2.5">
         <a href={`tel:${PHONE}`} aria-label="Позвонить"
           className="flex h-[52px] w-[52px] items-center justify-center rounded-full bg-accent text-white shadow-lg transition-all duration-200 hover:scale-110 hover:shadow-xl active:scale-95">
           <Phone className="h-5 w-5" strokeWidth={2} />
