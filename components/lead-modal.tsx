@@ -113,11 +113,11 @@ export function LeadModal() {
         className={`fixed left-1/2 top-1/2 z-[9981] w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 transition-all duration-350 ease-out ${leaving ? "scale-95 opacity-0" : "scale-100 opacity-100"}`}
       >
         <div className="overflow-hidden rounded-3xl bg-foreground border border-white/25 shadow-2xl">
-          <div className="px-7 pt-7 pb-5">
+          <div className="px-5 pt-5 pb-4 sm:px-7 sm:pt-7 sm:pb-5">
             <div className="flex items-start justify-between">
               <div>
-                <h2 className="font-serif text-3xl font-bold text-primary-foreground sm:text-4xl">{title}</h2>
-                <p className="mt-2 text-base leading-relaxed text-primary-foreground/75 sm:text-lg">
+                <h2 className="font-serif text-2xl font-bold text-primary-foreground sm:text-3xl sm:text-4xl">{title}</h2>
+                <p className="mt-1.5 text-sm leading-relaxed text-primary-foreground/75 sm:text-base sm:text-lg">
                   {"Просто оставьте имя и номер телефона — мы сами вам перезвоним!"}
                 </p>
               </div>
@@ -128,7 +128,7 @@ export function LeadModal() {
             </div>
           </div>
 
-          <div className="bg-background px-7 pb-7 pt-6 rounded-t-3xl">
+          <div className="bg-background px-5 pb-5 pt-4 rounded-t-3xl sm:px-7 sm:pb-7 sm:pt-6">
             {status === "success" ? (
               <div className="flex flex-col items-center gap-4 py-6 text-center">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
@@ -140,7 +140,7 @@ export function LeadModal() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-4">
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="lead-name" className="hidden text-base font-medium text-foreground sm:block">{"Ваше имя"}</label>
                   <div className="relative">
@@ -148,7 +148,7 @@ export function LeadModal() {
                     <input id="lead-name" type="text" placeholder="Ваше имя" value={name}
                       onChange={(e) => handleNameChange(e.target.value)}
                       onBlur={() => { setNameTouched(true); setNameError(validateName(name)) }}
-                      className={`w-full rounded-xl border py-3 pl-10 pr-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-all bg-secondary ${nameError && nameTouched ? "border-red-400 focus:ring-red-300" : "border-border focus:border-accent focus:ring-accent/20"}`}
+                      className={`w-full rounded-xl border py-2.5 pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-all bg-secondary sm:py-3 sm:text-base ${nameError && nameTouched ? "border-red-400 focus:ring-red-300" : "border-border focus:border-accent focus:ring-accent/20"}`}
                     />
                   </div>
                   {nameError && nameTouched && <p className="text-xs font-medium text-red-500">{nameError}</p>}
@@ -161,7 +161,7 @@ export function LeadModal() {
                     <input id="lead-phone" type="tel" placeholder="+48 000 000 000" value={phone}
                       onChange={(e) => handlePhoneChange(e.target.value)}
                       onBlur={() => { setPhoneTouched(true); setPhoneError(validatePhone(phone)) }}
-                      className={`w-full rounded-xl border py-3 pl-10 pr-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-all bg-secondary ${phoneError && phoneTouched ? "border-red-400 focus:ring-red-300" : "border-border focus:border-accent focus:ring-accent/20"}`}
+                      className={`w-full rounded-xl border py-2.5 pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-all bg-secondary sm:py-3 sm:text-base ${phoneError && phoneTouched ? "border-red-400 focus:ring-red-300" : "border-border focus:border-accent focus:ring-accent/20"}`}
                     />
                   </div>
                   {phoneError && phoneTouched && <p className="text-xs font-medium text-red-500">{phoneError}</p>}
@@ -174,7 +174,7 @@ export function LeadModal() {
                       {agreed && <svg className="h-3 w-3 text-white" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>}
                     </div>
                   </div>
-                  <span className="text-sm leading-relaxed text-muted-foreground">
+                  <span className="text-xs leading-relaxed text-muted-foreground sm:text-sm">
                     {"Я согласен с "}
                     <Link href="/documents#privacy" target="_blank" className="font-medium text-accent underline-offset-2 hover:underline" onClick={(e) => e.stopPropagation()}>
                       {"политикой конфиденциальности"}
@@ -188,7 +188,7 @@ export function LeadModal() {
                 )}
 
                 <button type="submit" disabled={status === "loading"}
-                  className={`mt-1 flex w-full items-center justify-center gap-2 rounded-xl py-4 text-base font-semibold text-white transition-all ${status === "loading" ? "cursor-not-allowed bg-muted text-muted-foreground" : "bg-accent hover:scale-[1.02] hover:bg-[#3d7dca] active:scale-[0.98]"}`}>
+                  className={`mt-1 flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold text-white transition-all sm:py-4 sm:text-base ${status === "loading" ? "cursor-not-allowed bg-muted text-muted-foreground" : "bg-accent hover:scale-[1.02] hover:bg-[#3d7dca] active:scale-[0.98]"}`}>
                   {status === "loading" ? (
                     <><svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>{"Отправляем..."}</>
                   ) : (
