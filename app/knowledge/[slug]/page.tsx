@@ -43,13 +43,13 @@ function renderMarkdown(content: string): string {
 
     // H2
     if (line.startsWith("## ")) {
-      blocks.push(`<h2 class="font-serif text-2xl font-bold text-foreground mt-10 mb-4 sm:text-3xl">${applyInline(line.slice(3))}</h2>`)
+      blocks.push(`<h2 class="font-serif text-3xl font-bold text-foreground mt-10 mb-4 sm:text-4xl">${applyInline(line.slice(3))}</h2>`)
       i++; continue
     }
 
     // H3
     if (line.startsWith("### ")) {
-      blocks.push(`<h3 class="font-serif text-xl font-bold text-foreground mt-7 mb-3">${applyInline(line.slice(4))}</h3>`)
+      blocks.push(`<h3 class="font-serif text-2xl font-bold text-foreground mt-7 mb-3">${applyInline(line.slice(4))}</h3>`)
       i++; continue
     }
 
@@ -160,7 +160,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           />
           <div className="absolute inset-0 bg-foreground/65" />
           <div className="relative flex h-full flex-col items-center justify-center px-4 text-center">
-            <h1 className="max-w-3xl font-serif text-2xl font-bold text-primary-foreground sm:text-3xl md:text-4xl text-balance">
+            <h1 className="max-w-3xl font-serif text-3xl font-bold text-primary-foreground sm:text-4xl md:text-5xl text-balance">
               {article.title}
             </h1>
           </div>
