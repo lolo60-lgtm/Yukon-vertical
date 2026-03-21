@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { Instagram } from "lucide-react"
 
 export function Footer() {
   return (
@@ -7,11 +6,12 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
 
-          {/* Company info */}
+          {/* Company info — без иконки Instagram */}
           <div className="flex flex-col gap-5">
             <div className="flex items-center gap-2">
-              <span className="font-mono text-xl font-bold text-foreground">{"YUKON"}</span>
-              <span className="font-mono text-xl font-bold text-accent">
+              {/* Увеличено: text-xl → text-3xl */}
+              <span className="font-mono text-3xl font-bold text-foreground">{"YUKON"}</span>
+              <span className="font-mono text-3xl font-bold text-accent">
                 {"KOD "}
                 <span className="font-sans font-black">{"95"}</span>
               </span>
@@ -19,22 +19,11 @@ export function Footer() {
             <p className="text-base leading-relaxed text-muted-foreground">
               {"Помогаем водителям легально работать в Европе. Обучение онлайн, всего 1 визит в Краков."}
             </p>
-            <div className="flex gap-3">
-              <a
-                href="https://www.instagram.com/yukon_kod_95/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10 text-accent transition-all hover:scale-105 hover:bg-accent hover:text-accent-foreground"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-            </div>
           </div>
 
-          {/* Legal links */}
+          {/* Документы — порядок: Сертификат, Реквизиты, Политика, Условия, Соглашение */}
           <div className="flex flex-col gap-5">
-            <h3 className="font-serif text-2xl font-bold text-foreground">{"Документы"}</h3>
+            <h3 className="font-serif text-3xl font-bold text-foreground">{"Документы"}</h3>
             <div className="flex flex-col gap-3">
               <Link href="/documents#certificate" className="text-base text-muted-foreground transition-colors hover:text-accent">{"Сертификат"}</Link>
               <Link href="/documents#requisites" className="text-base text-muted-foreground transition-colors hover:text-accent">{"Реквизиты компании"}</Link>
@@ -44,9 +33,9 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Map only */}
+          {/* Карта */}
           <div className="flex flex-col gap-5">
-            <h3 className="font-serif text-2xl font-bold text-foreground">{"Наш офис"}</h3>
+            <h3 className="font-serif text-3xl font-bold text-foreground">{"Наш офис"}</h3>
             <div className="overflow-hidden rounded-xl border border-border">
               <iframe
                 title="Yukon KOD 95 office location"
