@@ -9,7 +9,7 @@ import { Footer } from "@/components/footer"
 function CertificateImage() {
   const [open, setOpen] = useState(false)
   // ⬇️ ЗАМЕНИ НА РЕАЛЬНУЮ ССЫЛКУ НА ФОТО СЕРТИФИКАТА (например с postimg.cc)
-  const src = "https://i.postimg.cc/LX7WY7Cs/6e4aff91-1.png"
+  const src = "/images/certificate.jpg"
 
   return (
     <>
@@ -169,16 +169,9 @@ function AccordionList() {
   }, [])
 
   function toggle(id: string) {
-  const el = document.getElementById(id)
-  
-  setOpenId((prev) => (prev === id ? null : id))
-
-  // Ждём 520мс — столько длится CSS анимация закрытия (duration-500)
-  // Только после полного завершения анимации скролим к нужной плашке
-  setTimeout(() => {
-    el?.scrollIntoView({ behavior: "smooth", block: "start" })
-  }, 520)
-}
+    // Если кликнули на уже открытый — закрываем. Иначе — открываем только его.
+    setOpenId((prev) => (prev === id ? null : id))
+  }
 
   return (
     <div className="flex flex-col gap-4">
@@ -192,22 +185,18 @@ function AccordionList() {
             className="scroll-mt-24 overflow-hidden rounded-2xl border border-border bg-background shadow-sm transition-shadow duration-300 hover:shadow-md"
           >
             <button
-  onClick={() => toggle(section.id)}
-  // 1. Добавили relative, убрали justify-between и gap-4
-  className="relative flex w-full items-center px-7 py-6 text-left transition-colors hover:bg-secondary/50"
->
-  {/* Текст остался ровно таким, как был */}
-  <span className="font-serif text-xl font-bold text-foreground sm:text-2xl">
-    {section.title}
-  </span>
-  
-  <ChevronDown
-    // 2. Жестко прибили стрелку к правому краю (right-4), чтобы она всегда была на одной линии с остальными
-    className={`absolute right-2 top-1/2 -translate-y-1/2 h-6 w-6 text-accent transition-transform duration-300 ${
-      isOpen ? "rotate-180" : ""
-    }`}
-  />
-</button>
+              onClick={() => toggle(section.id)}
+              className="flex w-full items-center justify-between gap-4 px-7 py-6 text-left transition-colors hover:bg-secondary/50"
+            >
+              <span className="font-serif text-2xl font-bold text-foreground sm:text-3xl">
+                {section.title}
+              </span>
+              <ChevronDown
+                className={`h-6 w-6 shrink-0 text-accent transition-transform duration-300 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
 
             <div
               className={`transition-all duration-500 ease-in-out ${
@@ -233,7 +222,7 @@ export default function DocumentsPage() {
       <main>
         <div className="bg-foreground py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-4 text-center">
-            <h1 className="font-serif text-5xl font-bold text-primary-foreground sm:text-5xl md:text-7xl">
+            <h1 className="font-serif text-4xl font-bold text-primary-foreground md:text-5xl">
               {"Документы"}
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-primary-foreground/80">
