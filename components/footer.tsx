@@ -53,7 +53,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 border-t border-border pt-6 text-center">
-          <p className="text-sm text-muted-foreground">{"© 2025 Yukon KOD 95. Все права защищены."}</p>
+          <p className="text-sm text-muted-foreground">{"© 2026 Yukon KOD 95. Все права защищены."}</p>
         </div>
       </div>
     </footer>
