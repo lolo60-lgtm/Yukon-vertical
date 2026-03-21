@@ -135,12 +135,12 @@ export function Contact() {
                   {btn.label}
                 </a>
               ))}
-            <button
+            <LeadButton
               
               className="mt-2 flex items-center gap-4 rounded-2xl border-2 border-accent bg-transparent px-6 py-4 text-lg font-semibold text-accent shadow-md transition-all duration-200 lg:hover:scale-[1.03] lg:hover:bg-accent lg:hover:text-white"
             >
               {"✉️  Оставить заявку"}
-            </button>
+            </LeadButton>
           </div>
           </FadeInSection>
 
