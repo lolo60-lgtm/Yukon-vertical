@@ -3,6 +3,8 @@
 import { useState, useEffect, Suspense } from "react"
 import { ChevronDown, ZoomIn } from "lucide-react"
 import { Header } from "@/components/header"
+import { FloatingButtons } from "@/components/floating-buttons"
+import { LeadModal } from "@/components/lead-modal"
 import { Footer } from "@/components/footer"
 
 // ── Фото сертификата с лайтбоксом ──────────────
@@ -250,6 +252,8 @@ export default function DocumentsPage() {
         </section>
       </main>
       <Footer />
+      <FloatingButtons />
+      <LeadModal />
     </>
   )
 }
