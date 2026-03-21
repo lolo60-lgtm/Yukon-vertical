@@ -9,7 +9,7 @@ import { Footer } from "@/components/footer"
 function CertificateImage() {
   const [open, setOpen] = useState(false)
   // ⬇️ ЗАМЕНИ НА РЕАЛЬНУЮ ССЫЛКУ НА ФОТО СЕРТИФИКАТА (например с postimg.cc)
-  const src = "/images/certificate.jpg"
+  const src = "https://i.postimg.cc/LX7WY7Cs/6e4aff91-1.png"
 
   return (
     <>
@@ -186,9 +186,9 @@ function AccordionList() {
           >
             <button
               onClick={() => toggle(section.id)}
-              className="flex w-full items-center justify-between gap-4 px-7 py-6 text-left transition-colors hover:bg-secondary/50"
+              className="flex w-full items-start justify-between gap-3 px-6 py-5 text-left transition-colors hover:bg-secondary/50"
             >
-              <span className="font-serif text-2xl font-bold text-foreground sm:text-3xl">
+              <span className="font-serif text-xl font-bold text-foreground sm:text-3xl pr-2">
                 {section.title}
               </span>
               <ChevronDown
