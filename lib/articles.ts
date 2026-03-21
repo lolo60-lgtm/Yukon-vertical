@@ -11,7 +11,7 @@ export const articles: Article[] = [
     slug: "zachem-nuzhen-kod-95",
     title: "Код 95. Кому? Зачем? Какая польза?",
     excerpt: "Без этого сертификата работать водителем в Европе нельзя. Объясняем, что такое КОД 95, кому он нужен и что грозит без него.",
-    image: "https://i.postimg.cc/VLgC6QcS/A_highresolution.png",
+    image: "https://i.postimg.cc/KYXmbhYL/Ultra-realistic-photo-202603191537.jpg",
     content: `
 ## Что такое КОД 95?
 
@@ -55,7 +55,7 @@ export const articles: Article[] = [
     slug: "moshenniki-poddelnyye-spravki",
     title: "Не дайте себя обмануть!",
     excerpt: "В интернете полно предложений «быстро и дёшево» сделать КОД 95. Рассказываем, чем это заканчивается и как не попасть на удочку.",
-    image: "https://i.postimg.cc/s228xyF5/Korotkij-kurs.jpg",
+    image: "https://i.postimg.cc/FzkPN8zv/Highly-realistic-candid-202603191540.jpg",
     content: `
 ## Почему появились мошенники?
 
@@ -104,7 +104,7 @@ export const articles: Article[] = [
     slug: "rabota-voditel-europe",
     title: "Гид водителя С/СЕ по Европе",
     excerpt: "Реальная картина: зарплаты, условия, требования и с чего начать. Всё, что нужно знать перед первым рейсом в ЕС.",
-    image: "https://i.postimg.cc/VLgC6QcS/A_highresolution.png",
+    image: "https://i.postimg.cc/gjKKzpd6/Ultra-realistic-photo-202603191544.jpg",
     content: `
 ## Почему Европа?
 
@@ -163,7 +163,7 @@ export const articles: Article[] = [
     slug: "psihotesty",
     title: "Психотесты для водителей в Польше",
     excerpt: "Психологическое освидетельствование — обязательный этап для профессиональных водителей. Рассказываем, что проверяют и как подготовиться.",
-    image: "https://i.postimg.cc/m2N6ShBS/Dlinnyj-kurs.jpg",
+    image: "https://i.postimg.cc/CLzZLYwH/Ultra-realistic-photo-202603191547.jpg",
     content: `
 ## Зачем нужны психотесты?
 
@@ -222,7 +222,7 @@ export const articles: Article[] = [
     slug: "pravila-polucheniya-kod95",
     title: "Правила и инструкция получения КОД 95 в Польше",
     excerpt: "Пошаговое руководство: какие документы нужны, какой курс выбрать и сколько времени займёт весь процесс.",
-    image: "https://i.postimg.cc/s228xyF5/Korotkij-kurs.jpg",
+    image: "https://i.postimg.cc/RZxM5zhv/Highly-realistic-photo-202603191549.jpg",
     content: `
 ## Два вида курсов КОД 95
 
@@ -281,7 +281,7 @@ export const articles: Article[] = [
     slug: "kak-prohodit-obuchenie",
     title: "Как проходит наше обучение?",
     excerpt: "От первого звонка до получения КОД 95 в правах. Рассказываем честно: что, как и сколько по времени.",
-    image: "https://i.postimg.cc/VLgC6QcS/A_highresolution.png",
+    image: "https://i.postimg.cc/cCQd6D50/Highly-realistic-photo-202603191552.jpg",
     content: `
 ## Почему онлайн?
 
@@ -348,7 +348,7 @@ export const articles: Article[] = [
     slug: "prohozhdenie-medosmotra",
     title: "Прохождение медосмотра для КОД 95",
     excerpt: "Какие врачи, какие анализы, сколько стоит и как подготовиться. Всё о медицинской справке для профессионального водителя.",
-    image: "https://i.postimg.cc/m2N6ShBS/Dlinnyj-kurs.jpg",
+    image: "https://i.postimg.cc/0jvLX9ck/Ultra-realistic-photo-202603191554.jpg",
     content: `
 ## Зачем нужен медосмотр?
 
