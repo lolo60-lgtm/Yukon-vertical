@@ -150,7 +150,7 @@ export function Services() {
         {/* Кнопка консультации */}
         <div className="mt-14 mb-14 flex justify-center">
           <button
-            onClick={() => openLeadModal()}
+            onClick={() => openLeadModal("Бесплатная консультация?")}
             className="btn-breathe rounded-xl px-10 py-4 text-base font-semibold text-white bg-accent shadow-md transition-all duration-200 hover:scale-105 hover:bg-foreground hover:shadow-xl"
           >
             {"Получить бесплатную консультацию"}
