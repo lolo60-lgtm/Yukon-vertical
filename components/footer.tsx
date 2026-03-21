@@ -10,8 +10,8 @@ export function Footer() {
           <div className="flex flex-col gap-5">
             <div className="flex items-center gap-2">
               {/* Увеличено: text-xl → text-3xl */}
-              <span className="font-mono text-3xl font-bold text-foreground">{"YUKON"}</span>
-              <span className="font-mono text-3xl font-bold text-accent">
+              <span className="font-mono text-2xl font-bold text-foreground">{"YUKON"}</span>
+              <span className="font-mono text-2xl font-bold text-accent">
                 {"KOD "}
                 <span className="font-sans font-black">{"95"}</span>
               </span>
