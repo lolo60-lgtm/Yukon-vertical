@@ -84,7 +84,6 @@ function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; del
   )
 }
 
-// Подзаголовок карточки — правильный шрифт для "95"
 function PlanSubtitle({ text, featured }: { text: string; featured: boolean }) {
   const cls = `font-mono text-xl font-bold tracking-wider ${featured ? "text-accent" : "text-accent"}`
   if (text === "КОД 95") {
@@ -103,7 +102,6 @@ export function Pricing() {
     <section id="pricing" className="bg-secondary pt-10 pb-20 md:pt-14 md:pb-28">
       <div className="mx-auto max-w-7xl px-4">
 
-        {/* Заголовок */}
         <FadeInSection>
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl md:text-5xl text-balance">
@@ -115,7 +113,6 @@ export function Pricing() {
           </div>
         </FadeInSection>
 
-        {/* Карточки */}
         <div className="mt-12 grid gap-6 md:grid-cols-3 items-stretch">
           {plans.map((plan, i) => (
             <FadeInSection key={plan.title} delay={i * 120}>
@@ -123,7 +120,6 @@ export function Pricing() {
                 plan.featured ? "border-accent bg-foreground shadow-xl" : "border-border bg-background shadow-sm"
               }`}>
 
-                {/* Бейдж */}
                 {plan.badge && (
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                     <span className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1 text-sm font-semibold ${
@@ -136,7 +132,6 @@ export function Pricing() {
                 )}
 
                 <div className="flex flex-1 flex-col p-7 pt-8">
-                  {/* Заголовок карточки — крупнее */}
                   <div className="text-center">
                     <h3 className={`font-serif text-4xl font-bold ${plan.featured ? "text-primary-foreground" : "text-foreground"}`}>
                       {plan.title}
@@ -149,12 +144,11 @@ export function Pricing() {
                     </p>
                   </div>
 
-                  {/* Цена — супер большая */}
+                  {/* Цена — text-6xl (уменьшено с 8xl) */}
                   <div className="my-6 text-center">
                     {plan.price ? (
                       <>
-                        {/* text-8xl = очень крупная цена */}
-                        <span className={`font-sans font-black text-8xl ${plan.featured ? "text-primary-foreground" : "text-foreground"}`}>
+                        <span className={`font-sans font-black text-6xl ${plan.featured ? "text-primary-foreground" : "text-foreground"}`}>
                           {plan.price}
                         </span>
                         <span className={`ml-2 text-lg font-medium ${plan.featured ? "text-primary-foreground/60" : "text-muted-foreground"}`}>
@@ -168,10 +162,8 @@ export function Pricing() {
                     )}
                   </div>
 
-                  {/* Разделитель */}
                   <div className={`mb-6 h-px ${plan.featured ? "bg-primary-foreground/20" : "bg-border"}`} />
 
-                  {/* Список включённого — увеличенный текст */}
                   <ul className="flex flex-1 flex-col gap-3">
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-3">
@@ -187,7 +179,6 @@ export function Pricing() {
                     ))}
                   </ul>
 
-                  {/* Кнопка */}
                   <div className="mt-8">
                     {plan.available ? (
                       <a href="#contact" className={`flex w-full items-center justify-center rounded-lg px-6 py-4 text-base font-semibold transition-all hover:scale-105 ${
@@ -209,7 +200,6 @@ export function Pricing() {
           ))}
         </div>
 
-        {/* Нижняя подпись — симметричный отступ сверху и снизу */}
         <FadeInSection delay={400}>
           <div className="mt-14 mb-2 text-center">
             <p className="text-lg text-muted-foreground">
