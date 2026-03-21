@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import { BookOpen, GraduationCap, CreditCard, FileText, Globe, IdCard } from "lucide-react"
-import { openLeadModal } from "@/components/lead-modal"
 
 const services = [
   {
@@ -103,8 +102,7 @@ export function Services() {
                   <div className="flex flex-wrap justify-center gap-3">
                     {service.available !== false ? (
                       <>
-                        <button onClick={() => openLeadModal()}
-                          className="btn-breathe rounded-lg px-6 py-3 text-base font-semibold text-white bg-accent transition-all duration-200 hover:scale-105 hover:bg-foreground hover:shadow-lg">{"Записаться на курс"}</button>
+                        <LeadButton className="$1">{"Записаться на курс"}</LeadButton>
                         <a href="/knowledge/kak-prohodit-obuchenie" className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
                           {"Выбрать курс"}
                         </a>
@@ -144,8 +142,7 @@ export function Services() {
 
         {/* Кнопка консультации — симметричные отступы сверху и снизу */}
         <div className="mt-14 mb-14 flex justify-center">
-          <button onClick={() => openLeadModal()}
-            className="btn-breathe rounded-xl px-10 py-4 text-base font-semibold text-white bg-accent shadow-md transition-all duration-200 hover:scale-105 hover:bg-foreground hover:shadow-xl">{"Получить бесплатную консультацию"}</button>
+          <LeadButton className="$1">{"Получить бесплатную консультацию"}</LeadButton>
         </div>
       </div>
     </section>
