@@ -169,8 +169,18 @@ function AccordionList() {
   }, [])
 
   function toggle(id: string) {
-    // Если кликнули на уже открытый — закрываем. Иначе — открываем только его.
-    setOpenId((prev) => (prev === id ? null : id))
+    const el = document.getElementById(id)
+    setOpenId((prev) => {
+      // Если закрываем — просто закрываем с анимацией
+      if (prev === id) return null
+      // Если открываем новую — закрываем старую мгновенно (через state)
+      // и сразу открываем новую
+      return id
+    })
+    // Скролим к плашке сразу — старая уже "исчезла" мгновенно
+    requestAnimationFrame(() => {
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
+    })
   }
 
   return (
@@ -199,9 +209,11 @@ function AccordionList() {
             </button>
 
             <div
-              className={`transition-all duration-500 ease-in-out ${
-                isOpen ? "max-h-[3000px] opacity-100" : "max-h-0 opacity-0"
-              } overflow-hidden`}
+              className={`overflow-hidden ${
+                isOpen
+                  ? "max-h-[3000px] opacity-100 transition-all duration-500 ease-in-out"
+                  : "max-h-0 opacity-0"
+              }`}
             >
               <div className="border-t border-border px-7 py-7">
                 {section.content}
