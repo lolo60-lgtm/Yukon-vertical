@@ -4,8 +4,9 @@ import { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
 import { X, Phone, User, Send, CheckCircle } from "lucide-react"
 
-// Открыть модал с опциональным заголовком
+// SSR-безопасная функция открытия модала
 export function openLeadModal(title?: string) {
+  if (typeof window === "undefined") return
   window.dispatchEvent(new CustomEvent("open-lead-modal", { detail: { title } }))
 }
 
@@ -68,16 +69,13 @@ export function LeadModal() {
   }, [])
 
   function handleNameChange(v: string) {
-    // Только буквы и пробелы, макс 20
     const filtered = v.replace(/[^a-zA-Zа-яА-ЯёЁ\s\-]/g, "").slice(0, 20)
     setName(filtered)
     if (nameTouched) setNameError(validateName(filtered))
   }
 
   function handlePhoneChange(v: string) {
-    // Только + в начале и цифры, без пробелов
     let filtered = v.replace(/[^0-9+]/g, "")
-    // + только в начале
     if (filtered.indexOf("+") > 0) filtered = filtered.replace(/\+/g, "")
     if (filtered.split("+").length > 2) filtered = "+" + filtered.replace(/\+/g, "")
     setPhone(filtered)
@@ -107,25 +105,18 @@ export function LeadModal() {
 
   return (
     <>
-      {/* Затемнение — 70% */}
       <div
         className={`fixed inset-0 z-[9980] bg-foreground/70 backdrop-blur-sm transition-opacity duration-350 ${leaving ? "opacity-0" : "opacity-100"}`}
         onClick={close}
       />
-
-      {/* Карточка — полностью тёмная, белая обводка */}
       <div
         className={`fixed left-1/2 top-1/2 z-[9981] w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 transition-all duration-350 ease-out ${leaving ? "scale-95 opacity-0" : "scale-100 opacity-100"}`}
       >
         <div className="overflow-hidden rounded-3xl bg-foreground border border-white/25 shadow-2xl">
-
-          {/* Заголовок */}
           <div className="px-7 pt-7 pb-5">
             <div className="flex items-start justify-between">
               <div>
-                <h2 className="font-serif text-3xl font-bold text-primary-foreground sm:text-4xl">
-                  {title}
-                </h2>
+                <h2 className="font-serif text-3xl font-bold text-primary-foreground sm:text-4xl">{title}</h2>
                 <p className="mt-2 text-base leading-relaxed text-primary-foreground/75 sm:text-lg">
                   {"Просто оставьте имя и номер телефона — мы сами вам перезвоним!"}
                 </p>
@@ -137,7 +128,6 @@ export function LeadModal() {
             </div>
           </div>
 
-          {/* Форма */}
           <div className="bg-background px-7 pb-7 pt-6 rounded-t-3xl">
             {status === "success" ? (
               <div className="flex flex-col items-center gap-4 py-6 text-center">
@@ -151,71 +141,37 @@ export function LeadModal() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-
-                {/* Имя — label скрыт на мобильном */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="lead-name" className="hidden text-base font-medium text-foreground sm:block">
-                    {"Ваше имя"}
-                  </label>
+                  <label htmlFor="lead-name" className="hidden text-base font-medium text-foreground sm:block">{"Ваше имя"}</label>
                   <div className="relative">
                     <User className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                    <input
-                      id="lead-name"
-                      type="text"
-                      // mobile placeholder — "Ваше имя", desktop — "Максим"
-                      placeholder="Ваше имя"
-                      value={name}
+                    <input id="lead-name" type="text" placeholder="Ваше имя" value={name}
                       onChange={(e) => handleNameChange(e.target.value)}
                       onBlur={() => { setNameTouched(true); setNameError(validateName(name)) }}
-                      className={`w-full rounded-xl border py-3 pl-10 pr-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-all bg-secondary ${
-                        nameError && nameTouched
-                          ? "border-red-400 focus:ring-red-300 focus:border-red-400"
-                          : "border-border focus:border-accent focus:ring-accent/20"
-                      }`}
+                      className={`w-full rounded-xl border py-3 pl-10 pr-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-all bg-secondary ${nameError && nameTouched ? "border-red-400 focus:ring-red-300" : "border-border focus:border-accent focus:ring-accent/20"}`}
                     />
-                    {/* Desktop placeholder — "Максим" через CSS */}
                   </div>
-                  {nameError && nameTouched && (
-                    <p className="text-xs font-medium text-red-500">{nameError}</p>
-                  )}
+                  {nameError && nameTouched && <p className="text-xs font-medium text-red-500">{nameError}</p>}
                 </div>
 
-                {/* Телефон — label скрыт на мобильном */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="lead-phone" className="hidden text-base font-medium text-foreground sm:block">
-                    {"Номер телефона"}
-                  </label>
+                  <label htmlFor="lead-phone" className="hidden text-base font-medium text-foreground sm:block">{"Номер телефона"}</label>
                   <div className="relative">
                     <Phone className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                    <input
-                      id="lead-phone"
-                      type="tel"
-                      placeholder="+48 000 000 000"
-                      value={phone}
+                    <input id="lead-phone" type="tel" placeholder="+48 000 000 000" value={phone}
                       onChange={(e) => handlePhoneChange(e.target.value)}
                       onBlur={() => { setPhoneTouched(true); setPhoneError(validatePhone(phone)) }}
-                      className={`w-full rounded-xl border py-3 pl-10 pr-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-all bg-secondary ${
-                        phoneError && phoneTouched
-                          ? "border-red-400 focus:ring-red-300 focus:border-red-400"
-                          : "border-border focus:border-accent focus:ring-accent/20"
-                      }`}
+                      className={`w-full rounded-xl border py-3 pl-10 pr-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-all bg-secondary ${phoneError && phoneTouched ? "border-red-400 focus:ring-red-300" : "border-border focus:border-accent focus:ring-accent/20"}`}
                     />
                   </div>
-                  {phoneError && phoneTouched && (
-                    <p className="text-xs font-medium text-red-500">{phoneError}</p>
-                  )}
+                  {phoneError && phoneTouched && <p className="text-xs font-medium text-red-500">{phoneError}</p>}
                 </div>
 
-                {/* Чекбокс */}
                 <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-border p-3 transition-colors hover:bg-secondary/60">
                   <div className="relative mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center">
                     <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} className="peer absolute opacity-0" />
                     <div className={`flex h-5 w-5 items-center justify-center rounded-md border-2 transition-all ${agreed ? "border-accent bg-accent" : "border-border bg-background"}`}>
-                      {agreed && (
-                        <svg className="h-3 w-3 text-white" viewBox="0 0 12 12" fill="none">
-                          <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      )}
+                      {agreed && <svg className="h-3 w-3 text-white" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>}
                     </div>
                   </div>
                   <span className="text-sm leading-relaxed text-muted-foreground">
@@ -228,28 +184,13 @@ export function LeadModal() {
                 </label>
 
                 {status === "error" && (
-                  <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600">
-                    {"Что-то пошло не так. Попробуйте ещё раз или напишите нам напрямую."}
-                  </p>
+                  <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600">{"Что-то пошло не так. Попробуйте ещё раз."}</p>
                 )}
 
-                <button
-                  type="submit"
-                  disabled={status === "loading"}
-                  className={`mt-1 flex w-full items-center justify-center gap-2 rounded-xl py-4 text-base font-semibold text-white transition-all ${
-                    status === "loading"
-                      ? "cursor-not-allowed bg-muted text-muted-foreground"
-                      : "bg-accent hover:scale-[1.02] hover:bg-[#3d7dca] active:scale-[0.98]"
-                  }`}
-                >
+                <button type="submit" disabled={status === "loading"}
+                  className={`mt-1 flex w-full items-center justify-center gap-2 rounded-xl py-4 text-base font-semibold text-white transition-all ${status === "loading" ? "cursor-not-allowed bg-muted text-muted-foreground" : "bg-accent hover:scale-[1.02] hover:bg-[#3d7dca] active:scale-[0.98]"}`}>
                   {status === "loading" ? (
-                    <>
-                      <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                      </svg>
-                      {"Отправляем..."}
-                    </>
+                    <><svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>{"Отправляем..."}</>
                   ) : (
                     <><Send className="h-4 w-4" />{"Перезвоните мне"}</>
                   )}
