@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { BookOpen, GraduationCap, CreditCard, FileText, Globe, IdCard } from "lucide-react"
+import { openLeadModal } from "@/components/lead-modal"
 
 const services = [
   {
