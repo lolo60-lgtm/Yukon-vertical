@@ -77,7 +77,7 @@ export function Services() {
       {/* Тёмная шапка */}
       <div className="bg-foreground py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 text-center">
-          <h2 className="font-serif text-4xl font-bold text-primary-foreground md:text-5xl">{"Наши услуги"}</h2>
+          <h2 className="font-serif text-5xl font-bold text-primary-foreground">{"Наши услуги"}</h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-primary-foreground/80 sm:text-lg">{"Выберите подходящий курс для получения сертификата КОД 95"}</p>
         </div>
       </div>
