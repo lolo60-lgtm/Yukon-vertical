@@ -11,7 +11,7 @@ const VIBER = "viber://chat?number=48452650325"
 const INSTAGRAM = "https://www.instagram.com/yukon_kod_95/"
 
 // Все кнопки одного голубого цвета, при hover — темнее
-const BTN_BASE = "bg-accent hover:bg-foreground"
+const BTN_BASE = "bg-accent hover:bg-[#3d7dca]"
 
 const socialButtons = [
   {
