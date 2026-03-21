@@ -7,6 +7,7 @@ import { ArrowLeft } from "lucide-react"
 import { ArticleBody } from "@/components/article-lightbox"
 import { FloatingButtons } from "@/components/floating-buttons"
 import { LeadModal } from "@/components/lead-modal"
+import { LeadButton } from "@/components/lead-button"
 
 export async function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }))
@@ -78,6 +79,11 @@ function renderMarkdown(content: string): string {
         i++
       }
       html = html.replace(/<img /g, '<img data-zoomable="true" ')
+      // Кнопки с data-lead-modal в HTML из articles.ts
+      html = html.replace(
+        /<button data-lead-modal="enroll"([^>]*)>/g,
+        '<button data-lead-modal="enroll"$1>'
+      )
       blocks.push(html.trim())
       continue
     }
@@ -121,17 +127,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   let htmlContent = renderMarkdown(article.content)
   htmlContent = htmlContent.replace(/<img /g, '<img data-zoomable="true" ')
-  // Кнопки с data-lead-modal — будут перехвачены в ArticleBody
-  htmlContent = htmlContent.replace(
-    /href="\/#contact"/g,
-    'data-lead-modal="contact" href="#"'
-  )
 
   return (
     <>
       <Header />
       <main>
-        {/* Hero */}
         <div className="relative h-64 overflow-hidden sm:h-80 md:h-96">
           <img src={article.image} alt={article.title} className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-foreground/65" />
@@ -149,9 +149,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               {"Назад к базе знаний"}
             </Link>
 
+            {/* ArticleBody перехватывает data-lead-modal кнопки */}
             <ArticleBody html={htmlContent} />
 
-            {/* CTA блок — "Связаться с нами" открывает модал с другим заголовком */}
+            {/* CTA блок — LeadButton клиентский компонент, безопасен в серверной странице */}
             <div className="mt-12 rounded-2xl bg-foreground p-8 text-center">
               <h3 className="font-serif text-2xl font-bold text-primary-foreground">
                 {"Нужна помощь с оформлением?"}
@@ -159,13 +160,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               <p className="mt-3 text-primary-foreground/70">
                 {"Мы поможем пройти весь путь — от медосмотра до получения КОД 95"}
               </p>
-              {/* Кнопка открывает модал с заголовком "Свяжитесь с нами" */}
-              <button
-                data-lead-modal="contact"
+              <LeadButton
+                title="Свяжитесь с нами"
                 className="mt-6 inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:bg-accent/90"
               >
                 {"Связаться с нами"}
-              </button>
+              </LeadButton>
             </div>
           </div>
         </section>
