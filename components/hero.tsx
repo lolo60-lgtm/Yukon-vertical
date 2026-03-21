@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { ChevronDown } from "lucide-react"
+import { openLeadModal } from "@/components/lead-modal"
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null)
@@ -36,12 +37,12 @@ export function Hero() {
         </p>
 
         <div className="mt-10 flex justify-center">
-          <a
-            href="#contact"
+          <button
+            onClick={openLeadModal}
             className="rounded-lg bg-[#4689e1] px-14 py-4 font-sans text-base font-semibold text-white transition-all hover:scale-105 hover:bg-[#3670c2]"
           >
             {"Записаться на курс"}
-          </a>
+          </button>
         </div>
       </div>
 
