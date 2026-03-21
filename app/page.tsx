@@ -3,11 +3,12 @@ import { Hero } from "@/components/hero"
 import { Services } from "@/components/services"
 import { About } from "@/components/about"
 import { Info } from "@/components/info"
-import { Pricing } from "@/components/pricing"
 import { Team } from "@/components/team"
+import { Pricing } from "@/components/pricing"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { FloatingButtons } from "@/components/floating-buttons"
+import { CookieBanner } from "@/components/cookie-banner"
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       </main>
       <Footer />
       <FloatingButtons />
+      <CookieBanner />
     </>
   )
 }
