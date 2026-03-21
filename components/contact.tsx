@@ -108,7 +108,7 @@ export function Contact() {
         {/* Заголовок */}
         <FadeInSection>
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-serif text-4xl font-bold text-primary-foreground md:text-5xl text-balance">
+            <h2 className="font-serif text-5xl font-bold text-primary-foreground text-balance">
               {"Остались вопросы?"}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-primary-foreground/70 sm:text-lg">
