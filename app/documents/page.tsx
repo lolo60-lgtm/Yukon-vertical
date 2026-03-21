@@ -222,7 +222,7 @@ export default function DocumentsPage() {
       <main>
         <div className="bg-foreground py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-4 text-center">
-            <h1 className="font-serif text-4xl font-bold text-primary-foreground md:text-5xl">
+            <h1 className="font-serif text-5xl font-bold text-primary-foreground">
               {"Документы"}
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-primary-foreground/80">
