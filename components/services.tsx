@@ -102,7 +102,8 @@ export function Services() {
                   <div className="flex flex-wrap justify-center gap-3">
                     {service.available !== false ? (
                       <>
-                        <LeadButton className="$1">{"Записаться на курс"}</LeadButton>
+                        <button onClick={() => openLeadModal()} className="$1">
+                          {"Записаться на курс"}</button>
                         <a href="/knowledge/kak-prohodit-obuchenie" className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
                           {"Выбрать курс"}
                         </a>
@@ -142,7 +143,8 @@ export function Services() {
 
         {/* Кнопка консультации — симметричные отступы сверху и снизу */}
         <div className="mt-14 mb-14 flex justify-center">
-          <LeadButton className="$1">{"Получить бесплатную консультацию"}</LeadButton>
+          <button onClick={() => openLeadModal()} className="$1">
+                          {"Получить бесплатную консультацию"}</button>
         </div>
       </div>
     </section>
