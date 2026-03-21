@@ -11,7 +11,7 @@ export const articles: Article[] = [
     slug: "zachem-nuzhen-kod-95",
     title: "Код 95. Кому? Зачем? Какая польза?",
     excerpt: "Без этого сертификата работать водителем в Европе нельзя. Объясняем, что такое КОД 95, кому он нужен и что грозит без него.",
-    image: "https://i.postimg.cc/KYXmbhYL/Ultra-realistic-photo-202603191537.jpg",
+    image: "https://i.postimg.cc/VLgC6QcS/A_highresolution.png",
     content: `
 ## Что такое КОД 95?
 
@@ -55,7 +55,7 @@ export const articles: Article[] = [
     slug: "moshenniki-poddelnyye-spravki",
     title: "Не дайте себя обмануть!",
     excerpt: "В интернете полно предложений «быстро и дёшево» сделать КОД 95. Рассказываем, чем это заканчивается и как не попасть на удочку.",
-    image: "https://i.postimg.cc/FzkPN8zv/Highly-realistic-candid-202603191540.jpg",
+    image: "https://i.postimg.cc/s228xyF5/Korotkij-kurs.jpg",
     content: `
 ## Почему появились мошенники?
 
@@ -78,20 +78,20 @@ export const articles: Article[] = [
 
 ## Как отличить легальный центр от мошенника?
 
-✅ Легальный центр аккредитован в реестре Министерства инфраструктуры РП\n
-✅ Обучение проходит по официальной программе (минимум 35 часов теории)\n
-✅ После обучения данные вносятся в электронную базу CEPiK\n
-✅ Цена реалистичная — слишком низкая цена должна настораживать\n
+✅ Легальный центр аккредитован в реестре Министерства инфраструктуры РП
+✅ Обучение проходит по официальной программе (минимум 35 часов теории)
+✅ После обучения данные вносятся в электронную базу CEPiK
+✅ Цена реалистичная — слишком низкая цена должна настораживать
 
-❌ Предлагают сделать «без обучения» или «за пару дней»\n
-❌ Нет адреса, только мессенджер\n
-❌ Не могут показать лицензию учебного центра\n
+❌ Предлагают сделать «без обучения» или «за пару дней»
+❌ Нет адреса, только мессенджер
+❌ Не могут показать лицензию учебного центра
 
 ## Yukon KOD 95 — всё официально
 
-После прохождения курса ваши данные появляются в официальном реестре, а КОД 95 действителен во всех странах ЕС. Никаких рисков.
+Мы работаем только через аккредитованных партнёров. После прохождения курса ваши данные появляются в официальном реестре, а КОД 95 действителен во всех странах ЕС. Никаких рисков.
 
-<div class="my-6 overflow-hidden rounded-xl border border-border shadow-sm" style="max-width:480px"><img src="https://i.postimg.cc/LX7WY7Cs/6e4aff91-1.png" alt="Сертификат Yukon KOD 95" style="width:100%;height:auto;display:block;border-radius:0.75rem" /></div>
+<div class="my-6 overflow-hidden rounded-xl border border-border shadow-sm" style="max-width:480px"><a href="https://i.postimg.cc/LX7WY7Cs/6e4aff91-1.png" target="_blank" rel="noopener noreferrer" title="Открыть сертификат в полном размере"><img src="https://i.postimg.cc/LX7WY7Cs/6e4aff91-1.png" alt="Сертификат Yukon KOD 95" style="width:100%;height:auto;display:block" /></a></div>
 
 <p class="mt-2 text-sm text-muted-foreground">Нажмите на сертификат, чтобы открыть в полном размере</p>
 
@@ -104,7 +104,7 @@ export const articles: Article[] = [
     slug: "rabota-voditel-europe",
     title: "Гид водителя С/СЕ по Европе",
     excerpt: "Реальная картина: зарплаты, условия, требования и с чего начать. Всё, что нужно знать перед первым рейсом в ЕС.",
-    image: "https://i.postimg.cc/gjKKzpd6/Ultra-realistic-photo-202603191544.jpg",
+    image: "https://i.postimg.cc/VLgC6QcS/A_highresolution.png",
     content: `
 ## Почему Европа?
 
@@ -163,7 +163,7 @@ export const articles: Article[] = [
     slug: "psihotesty",
     title: "Психотесты для водителей в Польше",
     excerpt: "Психологическое освидетельствование — обязательный этап для профессиональных водителей. Рассказываем, что проверяют и как подготовиться.",
-    image: "https://i.postimg.cc/CLzZLYwH/Ultra-realistic-photo-202603191547.jpg",
+    image: "https://i.postimg.cc/m2N6ShBS/Dlinnyj-kurs.jpg",
     content: `
 ## Зачем нужны психотесты?
 
@@ -222,7 +222,7 @@ export const articles: Article[] = [
     slug: "pravila-polucheniya-kod95",
     title: "Правила и инструкция получения КОД 95 в Польше",
     excerpt: "Пошаговое руководство: какие документы нужны, какой курс выбрать и сколько времени займёт весь процесс.",
-    image: "https://i.postimg.cc/RZxM5zhv/Highly-realistic-photo-202603191549.jpg",
+    image: "https://i.postimg.cc/s228xyF5/Korotkij-kurs.jpg",
     content: `
 ## Два вида курсов КОД 95
 
@@ -281,7 +281,7 @@ export const articles: Article[] = [
     slug: "kak-prohodit-obuchenie",
     title: "Как проходит наше обучение?",
     excerpt: "От первого звонка до получения КОД 95 в правах. Рассказываем честно: что, как и сколько по времени.",
-    image: "https://i.postimg.cc/cCQd6D50/Highly-realistic-photo-202603191552.jpg",
+    image: "https://i.postimg.cc/VLgC6QcS/A_highresolution.png",
     content: `
 ## Почему онлайн?
 
@@ -340,15 +340,13 @@ export const articles: Article[] = [
 ---
 
 Готовы начать? Напишите нам — ответим в течение нескольких часов.
-
-<div class="mt-8 text-center"><a href="/#contact" class="inline-flex items-center justify-center rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all hover:bg-foreground hover:scale-105 hover:shadow-xl">Записаться на курс</a></div>
 `,
   },
   {
     slug: "prohozhdenie-medosmotra",
     title: "Прохождение медосмотра для КОД 95",
     excerpt: "Какие врачи, какие анализы, сколько стоит и как подготовиться. Всё о медицинской справке для профессионального водителя.",
-    image: "https://i.postimg.cc/0jvLX9ck/Ultra-realistic-photo-202603191554.jpg",
+    image: "https://i.postimg.cc/m2N6ShBS/Dlinnyj-kurs.jpg",
     content: `
 ## Зачем нужен медосмотр?
 
