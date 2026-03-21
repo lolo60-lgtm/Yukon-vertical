@@ -34,19 +34,19 @@ export function Footer() {
 
           {/* Legal links */}
           <div className="flex flex-col gap-5">
-            <h3 className="font-serif text-xl font-bold text-foreground">{"Документы"}</h3>
+            <h3 className="font-serif text-2xl font-bold text-foreground">{"Документы"}</h3>
             <div className="flex flex-col gap-3">
-              <Link href="/documents#certificate" className="text-base text-muted-foreground transition-colors hover:text-accent">{"Сертификат"}</Link>
-              <Link href="/documents#requisites" className="text-base text-muted-foreground transition-colors hover:text-accent">{"Реквизиты компании"}</Link>
               <Link href="/documents#privacy" className="text-base text-muted-foreground transition-colors hover:text-accent">{"Политика конфиденциальности"}</Link>
               <Link href="/documents#terms" className="text-base text-muted-foreground transition-colors hover:text-accent">{"Условия предоставления услуг"}</Link>
-              <Link href="/documents#agreement" className="text-base text-muted-foreground transition-colors hover:text-accent">{"Пользовательское соглашение"}</Link>  
+              <Link href="/documents#agreement" className="text-base text-muted-foreground transition-colors hover:text-accent">{"Пользовательское соглашение"}</Link>
+              <Link href="/documents#certificate" className="text-base text-muted-foreground transition-colors hover:text-accent">{"Сертификат"}</Link>
+              <Link href="/documents#requisites" className="text-base text-muted-foreground transition-colors hover:text-accent">{"Реквизиты компании"}</Link>
             </div>
           </div>
 
           {/* Map only */}
           <div className="flex flex-col gap-5">
-            <h3 className="font-serif text-xl font-bold text-foreground">{"Наш офис"}</h3>
+            <h3 className="font-serif text-2xl font-bold text-foreground">{"Наш офис"}</h3>
             <div className="overflow-hidden rounded-xl border border-border">
               <iframe
                 title="Yukon KOD 95 office location"
