@@ -9,6 +9,7 @@ import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { FloatingButtons } from "@/components/floating-buttons"
 import { CookieBanner } from "@/components/cookie-banner"
+import { LeadModal } from "@/components/lead-modal"
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       <Footer />
       <FloatingButtons />
       <CookieBanner />
+      <LeadModal />
     </>
   )
 }
