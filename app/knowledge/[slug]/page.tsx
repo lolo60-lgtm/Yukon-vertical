@@ -5,8 +5,9 @@ import { Footer } from "@/components/footer"
 import { articles, getArticleBySlug } from "@/lib/articles"
 import { ArrowLeft } from "lucide-react"
 import { ArticleBody } from "@/components/article-lightbox"
+import { FloatingButtons } from "@/components/floating-buttons"
+import { LeadModal } from "@/components/lead-modal"
 
-// ── Нужны для SEO и правильной сборки Next.js — не трогать! ──
 export async function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }))
 }
@@ -21,9 +22,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-// ─────────────────────────────────────────────────────────────
-// Markdown → HTML
-// ─────────────────────────────────────────────────────────────
 function applyInline(text: string): string {
   return text
     .replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-foreground">$1</strong>')
@@ -37,29 +35,20 @@ function renderMarkdown(content: string): string {
 
   while (i < lines.length) {
     const line = lines[i].trimEnd()
-
-    // Пустая строка
     if (line === "") { i++; continue }
 
-    // H2
     if (line.startsWith("## ")) {
       blocks.push(`<h2 class="font-serif text-3xl font-bold text-foreground mt-10 mb-4 sm:text-4xl">${applyInline(line.slice(3))}</h2>`)
       i++; continue
     }
-
-    // H3
     if (line.startsWith("### ")) {
       blocks.push(`<h3 class="font-serif text-2xl font-bold text-foreground mt-7 mb-3">${applyInline(line.slice(4))}</h3>`)
       i++; continue
     }
-
-    // HR
     if (line === "---") {
       blocks.push(`<hr class="my-10 border-border" />`)
       i++; continue
     }
-
-    // Список через дефис
     if (line.startsWith("- ")) {
       const items: string[] = []
       while (i < lines.length && lines[i].trimEnd().startsWith("- ")) {
@@ -69,38 +58,29 @@ function renderMarkdown(content: string): string {
       blocks.push(`<ul class="flex flex-col gap-2 my-4">${items.join("")}</ul>`)
       continue
     }
-
-    // ✅ / ❌ — каждая строка отдельно в столбик
     if (line.startsWith("✅") || line.startsWith("❌")) {
       const items: string[] = []
       while (i < lines.length && (lines[i].trimEnd().startsWith("✅") || lines[i].trimEnd().startsWith("❌"))) {
         const raw = lines[i].trimEnd()
         const isOk = raw.startsWith("✅")
         const text = applyInline(raw.replace(/^[✅❌]\s*/, ""))
-        const icon = isOk
-          ? `<span class="shrink-0 text-lg leading-tight">✅</span>`
-          : `<span class="shrink-0 text-lg leading-tight">❌</span>`
+        const icon = isOk ? `<span class="shrink-0 text-lg leading-tight">✅</span>` : `<span class="shrink-0 text-lg leading-tight">❌</span>`
         items.push(`<li class="flex items-start gap-3">${icon}<span class="text-muted-foreground">${text}</span></li>`)
         i++
       }
       blocks.push(`<ul class="flex flex-col gap-2 my-4">${items.join("")}</ul>`)
       continue
     }
-
-    // HTML блоки (сертификат и т.д.) — добавляем data-zoomable к img
     if (line.startsWith("<")) {
       let html = ""
       while (i < lines.length && lines[i].trimEnd() !== "") {
         html += lines[i] + "\n"
         i++
       }
-      // Добавляем атрибут для лайтбокса ко всем img
       html = html.replace(/<img /g, '<img data-zoomable="true" ')
       blocks.push(html.trim())
       continue
     }
-
-    // Таблица
     if (line.startsWith("|")) {
       const rows: string[] = []
       let isHeader = true
@@ -119,8 +99,6 @@ function renderMarkdown(content: string): string {
       blocks.push(`<div class="my-6 overflow-x-auto rounded-xl border border-border"><table class="w-full">${rows.join("")}</table></div>`)
       continue
     }
-
-    // Обычные абзацы — **Схема X** и **Шаг X** разбиваем на отдельные блоки
     {
       const paragraphLines: string[] = []
       while (i < lines.length && lines[i].trimEnd() !== "") {
@@ -133,19 +111,21 @@ function renderMarkdown(content: string): string {
       blocks.push(`<p class="text-base leading-relaxed text-muted-foreground">${applyInline(paragraphLines.join(" "))}</p>`)
     }
   }
-
   return blocks.join("\n")
 }
 
-// ─────────────────────────────────────────────────────────────
-// Страница — серверный компонент (хорошо для SEO)
-// ─────────────────────────────────────────────────────────────
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const article = getArticleBySlug(slug)
   if (!article) notFound()
 
-  const htmlContent = renderMarkdown(article.content)
+  let htmlContent = renderMarkdown(article.content)
+  htmlContent = htmlContent.replace(/<img /g, '<img data-zoomable="true" ')
+  // Кнопки с data-lead-modal — будут перехвачены в ArticleBody
+  htmlContent = htmlContent.replace(
+    /href="\/#contact"/g,
+    'data-lead-modal="contact" href="#"'
+  )
 
   return (
     <>
@@ -153,11 +133,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <main>
         {/* Hero */}
         <div className="relative h-64 overflow-hidden sm:h-80 md:h-96">
-          <img
-            src={article.image}
-            alt={article.title}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+          <img src={article.image} alt={article.title} className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-foreground/65" />
           <div className="relative flex h-full flex-col items-center justify-center px-4 text-center">
             <h1 className="max-w-3xl font-serif text-3xl font-bold text-primary-foreground sm:text-4xl md:text-5xl text-balance">
@@ -166,21 +142,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
 
-        {/* Content */}
         <section className="py-12 md:py-16">
           <div className="mx-auto max-w-3xl px-4">
-            <Link
-              href="/knowledge"
-              className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent/80"
-            >
+            <Link href="/knowledge" className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent/80">
               <ArrowLeft className="h-4 w-4" />
               {"Назад к базе знаний"}
             </Link>
 
-            {/* ArticleBody — клиентский компонент с лайтбоксом */}
             <ArticleBody html={htmlContent} />
 
-            {/* CTA */}
+            {/* CTA блок — "Связаться с нами" открывает модал с другим заголовком */}
             <div className="mt-12 rounded-2xl bg-foreground p-8 text-center">
               <h3 className="font-serif text-2xl font-bold text-primary-foreground">
                 {"Нужна помощь с оформлением?"}
@@ -188,17 +159,20 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               <p className="mt-3 text-primary-foreground/70">
                 {"Мы поможем пройти весь путь — от медосмотра до получения КОД 95"}
               </p>
-              <Link
-                href="/#contact"
+              {/* Кнопка открывает модал с заголовком "Свяжитесь с нами" */}
+              <button
+                data-lead-modal="contact"
                 className="mt-6 inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:bg-accent/90"
               >
                 {"Связаться с нами"}
-              </Link>
+              </button>
             </div>
           </div>
         </section>
       </main>
       <Footer />
+      <FloatingButtons />
+      <LeadModal />
     </>
   )
 }
