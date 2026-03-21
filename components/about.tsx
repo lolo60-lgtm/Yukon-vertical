@@ -52,7 +52,7 @@ export function About() {
           {/* Текст */}
           <FadeInSection delay={150}>
             <div>
-              <h2 className="font-serif text-4xl font-bold text-foreground md:text-5xl text-balance">
+              <h2 className="font-serif text-5xl font-bold text-foreground text-balance">
                 {"О компании "}
                 <span className="font-mono text-2xl tracking-tight text-foreground sm:text-3xl md:text-4xl">{"YUKON"}</span>{" "}
                 <span className="font-mono text-2xl tracking-tight text-accent sm:text-3xl md:text-4xl">
