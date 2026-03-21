@@ -61,10 +61,10 @@ export default function KnowledgePage() {
                     <h2 className="font-serif text-lg font-bold leading-snug text-foreground transition-colors group-hover:text-accent">
                       {renderTitle(article.title)}
                     </h2>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    <p className="mt-2 flex-1 text-base leading-relaxed text-muted-foreground sm:text-sm">
                       {article.excerpt}
                     </p>
-                    <span className="mt-4 text-sm font-semibold text-accent">
+                    <span className="mt-4 text-base font-semibold text-accent sm:text-sm">
                       {"Читать →"}
                     </span>
                   </div>
