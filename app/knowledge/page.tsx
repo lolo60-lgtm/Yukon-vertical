@@ -1,5 +1,7 @@
 import Link from "next/link"
 import { Header } from "@/components/header"
+import { FloatingButtons } from "@/components/floating-buttons"
+import { LeadModal } from "@/components/lead-modal"
 import { Footer } from "@/components/footer"
 import { articles } from "@/lib/articles"
 
@@ -75,6 +77,8 @@ export default function KnowledgePage() {
         </section>
       </main>
       <Footer />
+      <FloatingButtons />
+      <LeadModal />
     </>
   )
 }
