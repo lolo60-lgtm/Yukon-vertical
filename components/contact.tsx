@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Phone, Mail, MapPin } from "lucide-react"
+import { openLeadModal } from "@/components/lead-modal"
 
 const PHONE = "+48452650325"
 const PHONE_DISPLAY = "+48 452 650 325"
@@ -134,7 +135,13 @@ export function Contact() {
                   {btn.label}
                 </a>
               ))}
-            </div>
+            <button
+              onClick={openLeadModal}
+              className="mt-2 flex items-center gap-4 rounded-2xl border-2 border-accent bg-transparent px-6 py-4 text-lg font-semibold text-accent shadow-md transition-all duration-200 lg:hover:scale-[1.03] lg:hover:bg-accent lg:hover:text-white"
+            >
+              {"✉️  Оставить заявку"}
+            </button>
+          </div>
           </FadeInSection>
 
           {/* Email и Адрес — по центру вертикально */}
