@@ -281,7 +281,7 @@ export const articles: Article[] = [
     slug: "kak-prohodit-obuchenie",
     title: "Как проходит наше обучение?",
     excerpt: "От первого звонка до получения КОД 95 в правах. Рассказываем честно: что, как и сколько по времени.",
-    image: "https://i.postimg.cc/cCQd6D50/Highly-realistic-photo-202603191552.jpg",
+    image: "https://i.postimg.cc/yNQdCHP4/Kak-prohodit-nase-obucenie.jpg",
     content: `
 ## Почему онлайн?
 
