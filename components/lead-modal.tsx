@@ -103,7 +103,9 @@ if (res.ok) {
     (window as any).fbq('track', 'Lead')
   }
   setTimeout(() => close(), 2800)
-}
+      }
+    } catch { setStatus("error") }
+  }
 
   if (!open) return null
 
