@@ -97,9 +97,13 @@ export function LeadModal() {
         body: JSON.stringify({ name: name.trim(), phone: phone.trim() }),
       })
       setStatus(res.ok ? "success" : "error")
-      if (res.ok) setTimeout(() => close(), 2800)
-    } catch { setStatus("error") }
+if (res.ok) {
+  // Отправляем событие в Facebook Pixel
+  if (typeof window !== "undefined" && (window as any).fbq) {
+    (window as any).fbq('track', 'Lead')
   }
+  setTimeout(() => close(), 2800)
+}
 
   if (!open) return null
 
