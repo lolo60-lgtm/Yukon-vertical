@@ -24,6 +24,11 @@ export const metadata: Metadata = {
   title: 'Yukon KOD 95 — Получи Код 95 для работы в Европе',
   description:
     'Помогаем водителям легально работать в Европе. Обучение онлайн, всего 1 визит в Краков. Короткий и длинный курс Код 95, замена прав, чип-карта.',
+  verification: {
+    other: {
+      "facebook-domain-verification": "waunt6mkeis2xdtmwmr64cf7s4ntad",
+    },
+  },
 }
 
 export const viewport: Viewport = {
