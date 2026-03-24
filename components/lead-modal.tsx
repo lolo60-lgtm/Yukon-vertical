@@ -96,13 +96,10 @@ export function LeadModal() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: name.trim(), phone: phone.trim() }),
       })
-      setStatus(res.ok ? "success" : "error")
-if (res.ok) {
-  // Отправляем событие в Facebook Pixel
-  if (typeof window !== "undefined" && (window as any).fbq) {
-    (window as any).fbq('track', 'Lead')
-  }
-  setTimeout(() => close(), 2800)
+      if (res.ok) {
+  window.location.href = "/thank-you"
+} else {
+  setStatus("error")
 }
     } catch { setStatus("error") }
   }
