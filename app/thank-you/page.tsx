@@ -62,12 +62,12 @@ export default function ThankYouPage() {
 
         
           href="https://t.me/MarynaKod95"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full rounded-xl border border-border px-8 py-3.5 text-sm font-medium text-muted-foreground transition-all hover:bg-secondary"
-        >
-          Написать в Telegram
-        </a>
+  target="_blank"
+  rel="noopener noreferrer"
+  className="w-full rounded-xl border border-border px-8 py-3.5 text-sm font-medium text-muted-foreground transition-all hover:bg-secondary"
+>
+  Написать в Telegram
+</a>
 
       </div>
     </main>
