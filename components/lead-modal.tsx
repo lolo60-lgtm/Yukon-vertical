@@ -98,12 +98,13 @@ export function LeadModal() {
       })
       setStatus(res.ok ? "success" : "error")
 if (res.ok) {
-  // Отправляем событие в Facebook Pixel
+  // Отправляем событие в Facebook Pixel с уникальным ID для дедупликации
   if (typeof window !== "undefined" && (window as any).fbq) {
-    (window as any).fbq('track', 'Lead')
+    const eventId = `lead_${Date.now()}_${Math.random().toString(36).slice(2)}`
+    ;(window as any).fbq('track', 'Lead', {}, { eventID: eventId })
   }
   setTimeout(() => close(), 2800)
-      }
+}
     } catch { setStatus("error") }
   }
 
