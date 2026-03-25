@@ -4,13 +4,6 @@ import { useEffect } from "react"
 import Link from "next/link"
 import { CheckCircle, Phone, Mail } from "lucide-react"
 
-export default function ThankYouPage() {
-  useEffect(() => {
-    if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq("track", "Lead")
-    }
-  }, [])
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-background px-4 py-20 text-center">
       <div className="flex flex-col items-center gap-5 max-w-md w-full">
