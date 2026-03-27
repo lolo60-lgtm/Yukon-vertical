@@ -111,16 +111,10 @@ export function Services() {
                           {"Подробнее"}
                         </a>
                       </>
-                    ) : (
-                      <>
-                        <button disabled className="cursor-not-allowed rounded-lg border-2 border-gray-300 bg-gray-100 px-6 py-3 text-base font-semibold text-gray-400">
-                          {"Пока недоступен"}
-                        </button>
-                        <a href="/knowledge/kak-prohodit-obuchenie"
-                          className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
-                          {"Подробнее"}
-                        </a>
-                      </>
+                      ) : (
+                      <button disabled className="w-full cursor-not-allowed rounded-lg border-2 border-gray-300 bg-gray-100 px-6 py-3 text-base font-semibold text-gray-400">
+                        {"Пока недоступен"}
+                      </button>
                     )}
                   </div>
                 </div>
