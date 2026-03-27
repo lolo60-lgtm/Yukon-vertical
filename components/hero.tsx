@@ -20,7 +20,7 @@ export function Hero() {
   }
 
   return (
-    <section id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section id="hero" className="relative flex min-h-[60vh] items-center justify-center overflow-hidden">
       <img
         src="https://i.postimg.cc/VLgC6QcS/A_highresolution.png"
         alt="Фуры на европейской трассе"
@@ -30,7 +30,7 @@ export function Hero() {
 
       <div
         ref={ref}
-        className="relative z-10 mx-auto max-w-5xl translate-y-8 px-4 py-32 text-center opacity-0 transition-all duration-1000 ease-out"
+        className="relative z-10 mx-auto max-w-5xl translate-y-8 px-4 py-16 text-center opacity-0 transition-all duration-1000 ease-out"
       >
         <h1 className="text-balance font-mono text-4xl font-bold leading-tight tracking-tight text-primary-foreground sm:text-5xl md:text-6xl lg:text-7xl">
           {"Быстрый Код "}
