@@ -49,7 +49,7 @@ export function Hero() {
           opacity: fading ? 0 : 1,
         }}
       >
-        <source src="ТВОЯ_ССЫЛКА.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dt3zhmpgp/video/upload/v1774649699/animate_fq6nod.mp4" type="video/mp4" />
       </video>
 
       <div className="absolute inset-0 bg-foreground/60" />
