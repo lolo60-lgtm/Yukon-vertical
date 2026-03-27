@@ -30,7 +30,7 @@ function validatePhone(v: string) {
 export function LeadModal() {
   const [open, setOpen] = useState(false)
   const [leaving, setLeaving] = useState(false)
-  const [title, setTitle] = useState("Хотите записаться?")
+  const [title, setTitle] = useState("Получите консультацию")
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [agreed, setAgreed] = useState(false)
@@ -43,7 +43,7 @@ export function LeadModal() {
   useEffect(() => {
     const handler = (e: Event) => {
       const detail = (e as CustomEvent).detail
-      setTitle(detail?.title || "Хотите записаться?")
+      setTitle(detail?.title || "Получите консультацию")
       setOpen(true)
       setLeaving(false)
       setStatus("idle")
@@ -121,7 +121,7 @@ export function LeadModal() {
               <div>
                 <h2 className="font-serif text-2xl font-bold text-primary-foreground sm:text-3xl sm:text-4xl">{title}</h2>
                 <p className="mt-1.5 text-sm leading-relaxed text-primary-foreground/75 sm:text-base sm:text-lg">
-                  {"Просто оставьте имя и номер телефона — мы сами вам перезвоним!"}
+                  {"Оставьте свои контакты, мы с вами свяжемся!"}
                 </p>
               </div>
               <button onClick={close}
@@ -195,7 +195,7 @@ export function LeadModal() {
                   {status === "loading" ? (
                     <><svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>{"Отправляем..."}</>
                   ) : (
-                    <><Send className="h-4 w-4" />{"Перезвоните мне"}</>
+                    <><Send className="h-4 w-4" />{"Оставить заявку"}</>
                   )}
                 </button>
               </form>
