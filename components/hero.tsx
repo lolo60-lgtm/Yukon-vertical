@@ -30,7 +30,7 @@ export function Hero() {
 
       <div
         ref={ref}
-        className="relative z-10 mx-auto max-w-5xl px-4 py-8 mt-10 text-center opacity-0 transition-all duration-1000 ease-out"
+        className="relative z-10 mx-auto max-w-5xl px-4 py-8 -mt-4 sm:mt-10 text-center opacity-0 transition-all duration-1000 ease-out"
       >
         <h1 className="text-balance font-mono text-4xl font-bold leading-tight tracking-tight text-primary-foreground sm:text-5xl md:text-6xl lg:text-7xl">
           {"Быстрый Код "}
@@ -45,7 +45,7 @@ export function Hero() {
       
       </div>
 
-      <a href="#services" className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce" aria-label="Scroll down">
+      <a href="#services" className="absolute bottom-2 sm:bottom-6 left-1/2 z-10 -translate-x-1/2 animate-bounce" aria-label="Scroll down">
         <ChevronDown className="h-10 w-10 text-primary-foreground/70" />
       </a>
     </section>
