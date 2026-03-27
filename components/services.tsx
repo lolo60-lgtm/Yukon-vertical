@@ -108,7 +108,7 @@ export function Services() {
                         </button>
                         <a href="/knowledge/kak-prohodit-obuchenie"
                           className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
-                          {"Выбрать курс"}
+                          {"Подробнее"}
                         </a>
                       </>
                     ) : (
@@ -118,7 +118,7 @@ export function Services() {
                         </button>
                         <a href="/knowledge/kak-prohodit-obuchenie"
                           className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
-                          {"Выбрать курс"}
+                          {"Подробнее"}
                         </a>
                       </>
                     )}
