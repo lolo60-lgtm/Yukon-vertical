@@ -30,7 +30,7 @@ export function Hero() {
 
       <div
         ref={ref}
-        className="relative z-10 mx-auto max-w-5xl px-4 py-8 -mt-4 sm:mt-10 text-center opacity-0 transition-all duration-1000 ease-out"
+        className="relative z-10 mx-auto max-w-5xl px-4 py-8 -mt-4 sm:mt-2 text-center opacity-0 transition-all duration-1000 ease-out"
       >
         <h1 className="text-balance font-mono text-4xl font-bold leading-tight tracking-tight text-primary-foreground sm:text-5xl md:text-6xl lg:text-7xl">
           {"Быстрый Код "}
