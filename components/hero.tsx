@@ -28,7 +28,7 @@ export function Hero() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src="https://res.cloudinary.com/dt3zhmpgp/video/upload/v1774649699/animate_fq6nod.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dt3zhmpgp/video/upload/v1774651904/Loop_eucedk.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-foreground/60" />
 
