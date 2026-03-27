@@ -124,7 +124,10 @@ export function Services() {
         </div>
 
         {/* Доп. услуги */}
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+         <h3 className="mt-14 font-serif text-3xl font-bold text-accent sm:text-4xl text-center">
+          {"Дополнительные услуги"}
+        </h3>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.filter((s) => !s.featured).map((service, i) => {
             const Icon = service.icon
             return (
