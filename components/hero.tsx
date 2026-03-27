@@ -42,14 +42,7 @@ export function Hero() {
           {"Теория онлайн. Всего 1 визит в Краков. 100% легальные документы для водителей C и D. Начните зарабатывать в ЕС уже в этом месяце."}
         </p>
 
-        <div className="mt-10 flex justify-center">
-          <button
-            onClick={handleClick}
-            className="rounded-lg bg-[#4689e1] px-14 py-4 font-sans text-base font-semibold text-white transition-all hover:scale-105 hover:bg-[#3670c2]"
-          >
-            {"Записаться на курс"}
-          </button>
-        </div>
+      
       </div>
 
       <a href="#services" className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce" aria-label="Scroll down">
