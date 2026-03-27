@@ -161,7 +161,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 {"Мы поможем пройти весь путь — от медосмотра до получения КОД 95"}
               </p>
               <LeadButton
-                title="Свяжитесь с нами"
+                title="Все просто!"
                 className="mt-6 inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:bg-accent/90"
               >
                 {"Связаться с нами"}
