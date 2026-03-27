@@ -21,11 +21,15 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative flex min-h-[85vh] items-center justify-center overflow-hidden">
-      <img
-        src="https://i.postimg.cc/VLgC6QcS/A_highresolution.png"
-        alt="Фуры на европейской трассе"
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
         className="absolute inset-0 h-full w-full object-cover"
-      />
+      >
+        <source src="https://res.cloudinary.com/dt3zhmpgp/video/upload/v1774649699/animate_fq6nod.mp4" type="video/mp4" />
+      </video>
       <div className="absolute inset-0 bg-foreground/60" />
 
       <div
