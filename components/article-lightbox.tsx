@@ -48,9 +48,9 @@ export function ArticleBody({ html }: { html: string }) {
         e.preventDefault()
         e.stopPropagation()
         if (type === "contact") {
-          openLeadModal("Свяжитесь с нами")
+          openLeadModal("Все просто!")
         } else {
-          openLeadModal("Хотите записаться?")
+          openLeadModal("Получите консультацию")
         }
       }
       btn.addEventListener("click", handler)
