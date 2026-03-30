@@ -12,7 +12,8 @@ export default function KartaPobytuPage() {
   <style>{`
     @keyframes breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
     .btn-breathe{animation:breathe 2.4s ease-in-out infinite}
-  `}</style>
+  `}
+  </style>
 
         {/* Hero */}
         <div className="bg-foreground py-16 md:py-24">
