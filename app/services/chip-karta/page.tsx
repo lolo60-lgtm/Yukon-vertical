@@ -2,7 +2,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { LeadModal } from "@/components/lead-modal"
 import { LeadButton } from "@/components/lead-button"
-const breatheClass = "lg:animate-[breathe_2.4s_ease-in-out_infinite]"
+const breatheClass = "animate-[breathe_2.4s_ease-in-out_infinite]"
 
 export default function ChipKartaPage() {
   return (
@@ -23,7 +23,7 @@ export default function ChipKartaPage() {
             <div className="mt-8">
               <LeadButton
                 title="Чип-карта тахографа"
-                className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all lg:animate-[breathe_2.4s_ease-in-out_infinite] hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
+                className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all animate-[breathe_2.4s_ease-in-out_infinite] hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
               >
                 Оставить заявку
               </LeadButton>
@@ -66,7 +66,7 @@ export default function ChipKartaPage() {
  <div className="mb-10 flex justify-center">
             <LeadButton
               title="Чип-карта тахографа"
-              className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all lg:animate-[breathe_2.4s_ease-in-out_infinite] hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
+              className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all animate-[breathe_2.4s_ease-in-out_infinite] hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
             >
               Оставить заявку
             </LeadButton>
