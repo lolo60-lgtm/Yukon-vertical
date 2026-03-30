@@ -22,7 +22,7 @@ export default function PriglashenieNaVizuPage() {
             <div className="mt-8">
               <LeadButton
                 title="Приглашение на визу"
-                className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
+                className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all lg:animate-[breathe_2.4s_ease-in-out_infinite] hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
               >
                 Оставить заявку
               </LeadButton>
@@ -82,7 +82,14 @@ export default function PriglashenieNaVizuPage() {
               ))}
             </div>
           </section>
-
+<div className="mb-10 flex justify-center">
+            <LeadButton
+              title="Приглашение на визу"
+              className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all lg:animate-[breathe_2.4s_ease-in-out_infinite] hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
+            >
+              Получить консультацию
+            </LeadButton>
+          </div>
           {/* Как работает */}
           <section className="mb-14">
             <h2 className="font-serif text-3xl font-bold text-foreground mb-4">Как это работает: три шага</h2>
