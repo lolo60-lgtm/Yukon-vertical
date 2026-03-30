@@ -99,7 +99,14 @@ export default function KorotkiyKursPage() {
               </p>
             </div>
           </section>
-
+<div className="mb-10 flex justify-center">
+            <LeadButton
+              title="Короткий курс КОД 95"
+              className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all lg:animate-[breathe_2.4s_ease-in-out_infinite] hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
+            >
+              Оставить заявку
+            </LeadButton>
+          </div>
           {/* Сколько длится */}
           <section className="mb-14">
             <h2 className="font-serif text-3xl font-bold text-foreground mb-4">Сколько длится и как проходит</h2>
