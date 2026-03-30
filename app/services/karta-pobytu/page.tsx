@@ -27,7 +27,7 @@ export default function KartaPobytuPage() {
             <div className="mt-8">
               <LeadButton
                 title="Карта побыта"
-                className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all animate-[breathe hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
+                className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all btn-breathe hover:shadow-xl"
               >
                 Получить консультацию
               </LeadButton>
@@ -126,7 +126,7 @@ export default function KartaPobytuPage() {
 <div className="mb-10 flex justify-center">
             <LeadButton
               title="Карта побыта"
-              className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all animate-[breathe hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
+              className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all btn-breathe hover:shadow-xl"
             >
               Получить консультацию
             </LeadButton>
