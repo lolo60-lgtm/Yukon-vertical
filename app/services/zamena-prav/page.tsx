@@ -32,11 +32,14 @@ export default function ZamenaPravPage() {
 
         {/* Баннер */}
         <div className="mx-auto max-w-4xl px-4 -mt-8">
-          <div className="overflow-hidden rounded-2xl shadow-xl bg-secondary aspect-[16/7] flex items-center justify-center border border-border">
-            <img className="text-muted-foreground text-sm">https://i.postimg.cc/YS5dyN9v/Замена_прав.jpg
-              />
-          </div>
-        </div>
+  <div className="overflow-hidden rounded-2xl shadow-xl bg-secondary aspect-[16/7] flex items-center justify-center border border-border">
+    <img 
+      src="https://i.postimg.cc/YS5dyN9v/Замена_прав.jpg" 
+      alt="Замена прав" 
+      className="w-full h-full object-cover" 
+    />
+  </div>
+</div>
 
         <div className="mx-auto max-w-4xl px-4 py-14 md:py-20">
 
