@@ -12,22 +12,27 @@ export default function KorotkiyKursPage() {
         {/* Hero блок */}
         <div className="bg-foreground py-16 md:py-24">
           <div className="mx-auto max-w-4xl px-4 text-center">
-            <p className="mb-4 font-mono text-sm font-bold uppercase tracking-widest text-accent">
-              Услуги
-            </p>
+            <p className="mb-4 font-mono text-sm font-bold uppercase tracking-widest text-accent">Услуги</p>
             <h1 className="font-serif text-4xl font-bold text-primary-foreground sm:text-5xl md:text-6xl">
               Короткий курс КОД 95
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/80">
               Если у вас есть категория C или D, но получены они давно — вы почти наверняка можете оформить Код 95 по короткому курсу. Без долгой учёбы, без экзамена.
             </p>
+            <div className="mt-8">
+              <LeadButton
+                title="Короткий курс КОД 95"
+                className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
+              >
+                Записаться на курс
+              </LeadButton>
+            </div>
           </div>
         </div>
 
         {/* Картинка-баннер */}
         <div className="mx-auto max-w-4xl px-4 -mt-8">
           <div className="overflow-hidden rounded-2xl shadow-xl bg-secondary aspect-[16/7]">
-            {/* Замените src на вашу картинку */}
             <img
               src="https://i.postimg.cc/s228xyF5/Korotkij-kurs.jpg"
               alt="Короткий курс КОД 95"
@@ -40,9 +45,7 @@ export default function KorotkiyKursPage() {
 
           {/* Что такое Код 95 */}
           <section className="mb-14">
-            <h2 className="font-serif text-3xl font-bold text-foreground mb-4">
-              Что такое Код 95 и зачем он нужен
-            </h2>
+            <h2 className="font-serif text-3xl font-bold text-foreground mb-4">Что такое Код 95 и зачем он нужен</h2>
             <div className="h-1 w-16 rounded-full bg-accent mb-6" />
             <p className="text-lg leading-relaxed text-muted-foreground mb-4">
               Код 95 — это квалификационная отметка в водительском удостоверении. Без неё работать наёмным водителем грузовика или автобуса в странах Евросоюза официально нельзя.
@@ -54,9 +57,7 @@ export default function KorotkiyKursPage() {
 
           {/* Кому подходит */}
           <section className="mb-14">
-            <h2 className="font-serif text-3xl font-bold text-foreground mb-4">
-              Короткий курс: кому он подходит
-            </h2>
+            <h2 className="font-serif text-3xl font-bold text-foreground mb-4">Короткий курс: кому он подходит</h2>
             <div className="h-1 w-16 rounded-full bg-accent mb-6" />
             <p className="text-lg leading-relaxed text-muted-foreground mb-6">
               Существует два формата обучения — длинный и короткий. Короткий курс подходит вам, если попадаете хотя бы под один из этих пунктов:
@@ -101,28 +102,26 @@ export default function KorotkiyKursPage() {
 
           {/* Сколько длится */}
           <section className="mb-14">
-            <h2 className="font-serif text-3xl font-bold text-foreground mb-4">
-              Сколько длится и как проходит
-            </h2>
+            <h2 className="font-serif text-3xl font-bold text-foreground mb-4">Сколько длится и как проходит</h2>
             <div className="h-1 w-16 rounded-full bg-accent mb-6" />
 
-            {/* Таблица */}
-            <div className="overflow-hidden rounded-2xl border border-border">
-              <table className="w-full">
+            {/* Таблица — адаптивная */}
+            <div className="overflow-x-auto rounded-2xl border border-border">
+              <table className="w-full min-w-[320px]">
                 <thead>
                   <tr className="bg-foreground">
-                    <th className="px-6 py-4 text-left font-serif text-base font-bold text-primary-foreground">Формат</th>
-                    <th className="px-6 py-4 text-left font-serif text-base font-bold text-primary-foreground">Продолжительность</th>
+                    <th className="px-4 py-3 text-left font-serif text-sm font-bold text-primary-foreground sm:px-6 sm:py-4 sm:text-base">Формат</th>
+                    <th className="px-4 py-3 text-left font-serif text-sm font-bold text-primary-foreground sm:px-6 sm:py-4 sm:text-base">Продолжительность</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-t border-border bg-background">
-                    <td className="px-6 py-4 text-base text-foreground font-medium">Стандартный курс</td>
-                    <td className="px-6 py-4 text-base text-muted-foreground">5 рабочих дней</td>
+                    <td className="px-4 py-3 text-sm text-foreground font-medium sm:px-6 sm:py-4 sm:text-base">Стандартный курс</td>
+                    <td className="px-4 py-3 text-sm text-muted-foreground sm:px-6 sm:py-4 sm:text-base">5 рабочих дней</td>
                   </tr>
                   <tr className="border-t border-border bg-secondary">
-                    <td className="px-6 py-4 text-base text-foreground font-medium">С допуском ADR (опасные грузы)</td>
-                    <td className="px-6 py-4 text-base text-muted-foreground">3 рабочих дня</td>
+                    <td className="px-4 py-3 text-sm text-foreground font-medium sm:px-6 sm:py-4 sm:text-base">С допуском ADR</td>
+                    <td className="px-4 py-3 text-sm text-muted-foreground sm:px-6 sm:py-4 sm:text-base">3 рабочих дня</td>
                   </tr>
                 </tbody>
               </table>
@@ -132,7 +131,6 @@ export default function KorotkiyKursPage() {
               Обучение проходит в группе, в комфортном формате: теория, практические занятия, разбор реальных рабочих ситуаций. После окончания курса <strong className="text-foreground">экзамен сдавать не нужно</strong> — это одно из главных отличий короткого курса от длинного.
             </p>
 
-            {/* Место для картинки */}
             <div className="mt-8 overflow-hidden rounded-2xl bg-secondary aspect-[16/7] flex items-center justify-center border border-border">
               <p className="text-muted-foreground text-sm">📷 Место для фото процесса обучения</p>
             </div>
@@ -140,11 +138,8 @@ export default function KorotkiyKursPage() {
 
           {/* Что входит */}
           <section className="mb-14">
-            <h2 className="font-serif text-3xl font-bold text-foreground mb-4">
-              Что входит в стоимость
-            </h2>
+            <h2 className="font-serif text-3xl font-bold text-foreground mb-4">Что входит в стоимость</h2>
             <div className="h-1 w-16 rounded-full bg-accent mb-6" />
-
             <div className="flex flex-col gap-3">
               {[
                 "Подготовка и получение PKZ (регистрационный номер водителя)",
@@ -163,7 +158,6 @@ export default function KorotkiyKursPage() {
                 </div>
               ))}
             </div>
-
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
               Мы берём на себя всю бумажную часть. Вам не нужно самостоятельно разбираться в польских канцеляриях, записываться по отдельности на медосмотр или искать врача для психотеста — всё организовано в одном месте.
             </p>
@@ -171,11 +165,8 @@ export default function KorotkiyKursPage() {
 
           {/* Что получаете */}
           <section className="mb-14">
-            <h2 className="font-serif text-3xl font-bold text-foreground mb-4">
-              Что вы получаете по итогу
-            </h2>
+            <h2 className="font-serif text-3xl font-bold text-foreground mb-4">Что вы получаете по итогу</h2>
             <div className="h-1 w-16 rounded-full bg-accent mb-6" />
-
             <div className="rounded-2xl bg-foreground p-8">
               <p className="text-lg leading-relaxed text-primary-foreground/90 mb-4">
                 После окончания курса вы получаете удостоверение Код 95. На его основании в ваши права вносится отметка с датой действия.
@@ -195,24 +186,22 @@ export default function KorotkiyKursPage() {
                 </div>
               </div>
             </div>
-
-            {/* Место для картинки сертификата */}
             <div className="mt-8 overflow-hidden rounded-2xl bg-secondary aspect-[16/7] flex items-center justify-center border border-border">
               <p className="text-muted-foreground text-sm">📷 Место для фото сертификата / документа</p>
             </div>
           </section>
 
           {/* CTA */}
-          <section className="rounded-2xl bg-accent/10 border border-accent/20 px-8 py-10 text-center">
-            <h2 className="font-serif text-3xl font-bold text-foreground mb-3">
+          <section className="rounded-2xl bg-foreground px-8 py-10 text-center">
+            <h2 className="font-serif text-3xl font-bold text-primary-foreground mb-3">
               Остались вопросы или хотите записаться?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-primary-foreground/75 mb-8">
               Напишите нам — ответим в течение нескольких минут и расскажем, что конкретно нужно в вашем случае.
             </p>
             <LeadButton
               title="Короткий курс КОД 95"
-              className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all hover:scale-105 hover:bg-foreground hover:shadow-xl"
+              className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
             >
               Оставить заявку
             </LeadButton>
