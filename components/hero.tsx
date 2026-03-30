@@ -38,29 +38,30 @@ export function Hero() {
 
         {/* Кнопки — мобильный: столбик */}
         <div className="mt-8 flex flex-col items-center gap-3 sm:hidden">
-          <a href="/services/korotkiy-kurs" className="w-full max-w-xs rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Короткий курс</a>
-          <a href="/services/chip-karta" className="w-full max-w-xs rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Чип-карта</a>
-          <a href="/services/zamena-prav" className="w-full max-w-xs rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Замена прав</a>
-          <a href="/services/priglashenie-na-vizu" className="w-full max-w-xs rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Приглашение на визу</a>
-          <a href="/services/karta-pobytu" className="w-full max-w-xs rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Карта побыта</a>
+          <a href="/services/korotkiy-kurs" className="w-full max-w-xs rounded-xl bg-accent px-6 py-4 text-lg font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Короткий курс</a>
+          <a href="/services/chip-karta" className="w-full max-w-xs rounded-xl bg-accent px-6 py-4 text-lg font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Чип-карта</a>
+          <a href="/services/zamena-prav" className="w-full max-w-xs rounded-xl bg-accent px-6 py-4 text-lg font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Замена прав</a>
+          <a href="/services/priglashenie-na-vizu" className="w-full max-w-xs rounded-xl bg-accent px-6 py-4 text-lg font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Приглашение на визу</a>
+          <a href="/services/karta-pobytu" className="w-full max-w-xs rounded-xl bg-accent px-6 py-4 text-lg font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Карта побыта</a>
         </div>
 
-        {/* Кнопки — десктоп: кирпичная схема */}
+        {/* Кнопки — десктоп: кирпичная схема, одинаковый размер */}
         <div className="mt-8 hidden sm:flex flex-col items-center gap-3">
-          <a href="/services/korotkiy-kurs" className="rounded-xl bg-accent px-10 py-3.5 text-base font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Короткий курс</a>
+          <a href="/services/korotkiy-kurs" className="w-64 rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-white text-center transition-all duration-200 hover:scale-105 hover:shadow-xl hover:bg-[#3670c2]">Короткий курс</a>
           <div className="flex gap-3">
-            <a href="/services/chip-karta" className="rounded-xl bg-accent px-8 py-3.5 text-base font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Чип-карта</a>
-            <a href="/services/zamena-prav" className="rounded-xl bg-accent px-8 py-3.5 text-base font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Замена прав</a>
+            <a href="/services/chip-karta" className="w-64 rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-white text-center transition-all duration-200 hover:scale-105 hover:shadow-xl hover:bg-[#3670c2]">Чип-карта</a>
+            <a href="/services/zamena-prav" className="w-64 rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-white text-center transition-all duration-200 hover:scale-105 hover:shadow-xl hover:bg-[#3670c2]">Замена прав</a>
           </div>
           <div className="flex gap-3">
-            <a href="/services/priglashenie-na-vizu" className="rounded-xl bg-accent px-8 py-3.5 text-base font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Приглашение на визу</a>
-            <a href="/services/karta-pobytu" className="rounded-xl bg-accent px-8 py-3.5 text-base font-semibold text-white text-center transition-all hover:bg-[#3670c2]">Карта побыта</a>
+            <a href="/services/priglashenie-na-vizu" className="w-64 rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-white text-center transition-all duration-200 hover:scale-105 hover:shadow-xl hover:bg-[#3670c2]">Приглашение на визу</a>
+            <a href="/services/karta-pobytu" className="w-64 rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-white text-center transition-all duration-200 hover:scale-105 hover:shadow-xl hover:bg-[#3670c2]">Карта побыта</a>
           </div>
         </div>
 
       </div>
 
-      <a href="#services" className="absolute bottom-2 sm:bottom-6 left-1/2 z-10 -translate-x-1/2 animate-bounce" aria-label="Scroll down">
+      {/* Стрелка — опущена ниже на мобильном */}
+      <a href="#services" className="absolute bottom-4 sm:bottom-6 left-1/2 z-10 -translate-x-1/2 animate-bounce" aria-label="Scroll down">
         <ChevronDown className="h-10 w-10 text-primary-foreground/70" />
       </a>
     </section>
