@@ -197,9 +197,7 @@ export default function KorotkiyKursPage() {
                 </div>
               </div>
             </div>
-            <div className="mt-8 overflow-hidden rounded-2xl bg-secondary aspect-[16/7] flex items-center justify-center border border-border">
-              <p className="text-muted-foreground text-sm">📷 Место для фото сертификата / документа</p>
-            </div>
+            
           </section>
 
           {/* CTA */}
