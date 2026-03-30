@@ -13,7 +13,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section id="hero" className="relative flex min-h-[85vh] items-center justify-center overflow-hidden">
+    <section id="hero" className="relative flex min-h-[100vh] items-center justify-center overflow-hidden">
       <video
         autoPlay
         loop
