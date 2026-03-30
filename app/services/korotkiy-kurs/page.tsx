@@ -34,7 +34,7 @@ export default function KorotkiyKursPage() {
         <div className="mx-auto max-w-4xl px-4 -mt-8">
           <div className="overflow-hidden rounded-2xl shadow-xl bg-secondary aspect-[16/7]">
             <img
-              src="https://i.postimg.cc/s228xyF5/Korotkij-kurs.jpg"
+              src="https://i.postimg.cc/yNMLrhdg/Код_95_1.jpg"
               alt="Короткий курс КОД 95"
               className="h-full w-full object-cover"
             />
@@ -132,7 +132,7 @@ export default function KorotkiyKursPage() {
             </p>
 
             <div className="mt-8 overflow-hidden rounded-2xl bg-secondary aspect-[16/7] flex items-center justify-center border border-border">
-              <p className="text-muted-foreground text-sm">📷 Место для фото процесса обучения</p>
+              <p className="text-muted-foreground text-sm">https://i.postimg.cc/PqgSFbxP/Код_95_2.jpg</p>
             </div>
           </section>
 
