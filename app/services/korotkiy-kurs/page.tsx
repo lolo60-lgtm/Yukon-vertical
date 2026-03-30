@@ -131,9 +131,13 @@ export default function KorotkiyKursPage() {
               Обучение проходит в группе, в комфортном формате: теория, практические занятия, разбор реальных рабочих ситуаций. После окончания курса <strong className="text-foreground">экзамен сдавать не нужно</strong> — это одно из главных отличий короткого курса от длинного.
             </p>
 
-            <div className="mt-8 overflow-hidden rounded-2xl bg-secondary aspect-[16/7] flex items-center justify-center border border-border">
-              <p className="text-muted-foreground text-sm">https://i.postimg.cc/PqgSFbxP/Код_95_2.jpg</p>
-            </div>
+            <div className="overflow-hidden rounded-2xl shadow-xl bg-secondary aspect-[16/7] flex items-center justify-center border border-border">
+  <img 
+    src="https://i.postimg.cc/PqgSFbxP/Код_95_2.jpg" 
+    alt="Код 95" 
+    className="w-full h-full object-cover" 
+  />
+</div>
           </section>
 
           {/* Что входит */}
