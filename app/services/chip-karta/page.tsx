@@ -32,10 +32,14 @@ export default function ChipKartaPage() {
 
         {/* Баннер */}
         <div className="mx-auto max-w-4xl px-4 -mt-8">
-          <div className="overflow-hidden rounded-2xl shadow-xl bg-secondary aspect-[16/7] flex items-center justify-center border border-border">
-            <p className="text-muted-foreground text-sm">https://i.postimg.cc/zfsxPwBL/Чип_карта.jpg</p>
-          </div>
-        </div>
+  <div className="overflow-hidden rounded-2xl shadow-xl bg-secondary aspect-[16/7] flex items-center justify-center border border-border">
+    <img 
+      src="https://i.postimg.cc/zfsxPwBL/Чип_карта.jpg" 
+      alt="Чип-карта" 
+      className="w-full h-full object-cover" 
+    />
+  </div>
+</div>
 
         <div className="mx-auto max-w-4xl px-4 py-14 md:py-20">
 
