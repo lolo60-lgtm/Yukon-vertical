@@ -2,13 +2,17 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { LeadModal } from "@/components/lead-modal"
 import { LeadButton } from "@/components/lead-button"
-const breatheClass = "lg:animate-[breathe_2.4s_ease-in-out_infinite]"
+const breatheClass = "btn-breathe"
 
 export default function KartaPobytuPage() {
   return (
     <>
       <Header />
       <main className="bg-background">
+  <style>{`
+    @keyframes breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+    .btn-breathe{animation:breathe 2.4s ease-in-out infinite}
+  `}</style>
 
         {/* Hero */}
         <div className="bg-foreground py-16 md:py-24">
@@ -23,7 +27,7 @@ export default function KartaPobytuPage() {
             <div className="mt-8">
               <LeadButton
                 title="Карта побыта"
-                className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all lg:animate-[breathe_2.4s_ease-in-out_infinite] hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
+                className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all animate-[breathe hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
               >
                 Получить консультацию
               </LeadButton>
@@ -122,7 +126,7 @@ export default function KartaPobytuPage() {
 <div className="mb-10 flex justify-center">
             <LeadButton
               title="Карта побыта"
-              className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all lg:animate-[breathe_2.4s_ease-in-out_infinite] hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
+              className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all animate-[breathe hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
             >
               Получить консультацию
             </LeadButton>
