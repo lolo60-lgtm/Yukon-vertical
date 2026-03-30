@@ -33,7 +33,7 @@ export default function ChipKartaPage() {
         {/* Баннер */}
         <div className="mx-auto max-w-4xl px-4 -mt-8">
           <div className="overflow-hidden rounded-2xl shadow-xl bg-secondary aspect-[16/7] flex items-center justify-center border border-border">
-            <p className="text-muted-foreground text-sm">📷 Место для фото</p>
+            <p className="text-muted-foreground text-sm">https://i.postimg.cc/zfsxPwBL/Чип_карта.jpg</p>
           </div>
         </div>
 
