@@ -34,7 +34,7 @@ export default function ZamenaPravPage() {
         <div className="mx-auto max-w-4xl px-4 -mt-8">
   <div className="overflow-hidden rounded-2xl shadow-xl bg-secondary aspect-[16/7] flex items-center justify-center border border-border">
     <img 
-      src="https://i.postimg.cc/YS5dyN9v/Замена_прав.jpg" 
+      src="https://i.postimg.cc/Y0ZNhMWL/Zamena-prav.jpg" 
       alt="Замена прав" 
       className="w-full h-full object-cover" 
     />
