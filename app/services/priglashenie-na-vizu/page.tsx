@@ -2,6 +2,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { LeadModal } from "@/components/lead-modal"
 import { LeadButton } from "@/components/lead-button"
+const breatheClass = "lg:animate-[breathe_2.4s_ease-in-out_infinite]"
 
 export default function PriglashenieNaVizuPage() {
   return (
