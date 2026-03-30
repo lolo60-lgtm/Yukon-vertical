@@ -68,8 +68,7 @@ export function Services() {
     <section id="services">
       <style>{`
         @keyframes breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
-        @media(max-width:1023px){.btn-breathe{animation:breathe 2.4s ease-in-out infinite}}
-        @media(min-width:1024px){.btn-breathe{animation:none!important}}
+        .btn-breathe{animation:breathe 2.4s ease-in-out infinite}
       `}</style>
 
       <div className="bg-background pt-10 md:pt-12" />
