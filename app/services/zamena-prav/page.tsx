@@ -22,7 +22,7 @@ export default function ZamenaPravPage() {
             <div className="mt-8">
               <LeadButton
                 title="Замена прав"
-                className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
+                className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all lg:animate-[breathe_2.4s_ease-in-out_infinite] hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
               >
                 Получить консультацию
               </LeadButton>
@@ -101,7 +101,14 @@ export default function ZamenaPravPage() {
               </p>
             </div>
           </section>
-
+<div className="mb-10 flex justify-center">
+            <LeadButton
+              title="Замена прав"
+              className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all lg:animate-[breathe_2.4s_ease-in-out_infinite] hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
+            >
+              Получить консультацию
+            </LeadButton>
+          </div>
           {/* Процесс */}
           <section className="mb-14">
             <h2 className="font-serif text-3xl font-bold text-foreground mb-4">Как проходит процесс</h2>
