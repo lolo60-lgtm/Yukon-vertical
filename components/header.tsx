@@ -3,19 +3,28 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, Phone, Mail, MapPin, Clock } from "lucide-react"
+import { Menu, X, Phone, Mail, MapPin, Clock, ChevronDown } from "lucide-react"
 
 const navLinks = [
-  { label: "Главная", href: "/#hero", anchor: true },
-  { { label: "Услуги", href: "/services", anchor: false, dropdown: true },
-  { label: "Документы", href: "/documents", anchor: false },
-  { label: "База знаний", href: "/knowledge", anchor: false },
-  { label: "Цены", href: "/#pricing", anchor: true },
-  { label: "Контакт", href: "/#contact", anchor: true },
+  { label: "Главная", href: "/#hero", anchor: true, dropdown: false },
+  { label: "Услуги", href: "/services", anchor: false, dropdown: true },
+  { label: "Документы", href: "/documents", anchor: false, dropdown: false },
+  { label: "База знаний", href: "/knowledge", anchor: false, dropdown: false },
+  { label: "Цены", href: "/#pricing", anchor: true, dropdown: false },
+  { label: "Контакт", href: "/#contact", anchor: true, dropdown: false },
+]
+
+const serviceLinks = [
+  { label: "Короткий курс", href: "/services/korotkiy-kurs" },
+  { label: "Чип-карта", href: "/services/chip-karta" },
+  { label: "Замена прав", href: "/services/zamena-prav" },
+  { label: "Приглашение на визу", href: "/services/priglashenie-na-vizu" },
+  { label: "Карта побыта", href: "/services/karta-pobytu" },
 ]
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const [topBarVisible, setTopBarVisible] = useState(true)
@@ -60,7 +69,7 @@ export function Header() {
         transition: "background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease",
       }}
     >
-      {/* Top bar — только десктоп, скрывается при скролле */}
+      {/* Top bar */}
       <div
         className="hidden sm:block overflow-hidden border-b border-border/60"
         style={{
@@ -104,15 +113,33 @@ export function Header() {
           </span>
         </Link>
 
+        {/* Десктоп навигация */}
         <nav className="hidden items-center gap-6 lg:flex">
           {navLinks.map((link) =>
-            link.anchor ? (
+            link.dropdown ? (
+              <div key={link.href} className="relative group">
+                <button className="font-sans text-sm font-medium text-foreground transition-colors hover:text-accent flex items-center gap-1">
+                  {link.label}
+                  <ChevronDown className="h-3.5 w-3.5" />
+                </button>
+                <div className="absolute top-full left-0 pt-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                  <div className="rounded-xl border border-border bg-background shadow-xl py-2 min-w-[200px]">
+                    {serviceLinks.map((s) => (
+                      <Link key={s.href} href={s.href}
+                        className="block px-4 py-2.5 text-sm text-foreground hover:bg-secondary hover:text-accent transition-colors">
+                        {s.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : link.anchor ? (
               <a key={link.href} href={link.href} onClick={(e) => handleAnchorClick(e, link.href)}
                 className="font-sans text-sm font-medium text-foreground transition-colors hover:text-accent">
                 {link.label}
               </a>
             ) : (
-              <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}
+              <Link key={link.href} href={link.href}
                 className={`font-sans text-sm font-medium transition-colors hover:text-accent ${pathname.startsWith(link.href) ? "text-accent" : "text-foreground"}`}>
                 {link.label}
               </Link>
@@ -126,12 +153,32 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Мобильное меню */}
       {mobileOpen && (
         <nav className="border-t border-border bg-background/95 px-4 pb-4 backdrop-blur-xl lg:hidden">
           <div className="flex flex-col gap-1 pt-2">
             {navLinks.map((link) =>
-              link.anchor ? (
+              link.dropdown ? (
+                <div key={link.href}>
+                  <button
+                    onClick={() => setServicesOpen(!servicesOpen)}
+                    className="flex w-full items-center justify-between rounded-md px-3 py-2.5 font-sans text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                  >
+                    {link.label}
+                    <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  {servicesOpen && (
+                    <div className="ml-3 flex flex-col gap-1 border-l border-border pl-3 mt-1 mb-1">
+                      {serviceLinks.map((s) => (
+                        <Link key={s.href} href={s.href} onClick={() => setMobileOpen(false)}
+                          className="rounded-md px-3 py-2 font-sans text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
+                          {s.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : link.anchor ? (
                 <a key={link.href} href={link.href} onClick={(e) => handleAnchorClick(e, link.href)}
                   className="rounded-md px-3 py-2.5 font-sans text-sm font-medium text-foreground transition-colors hover:bg-secondary">
                   {link.label}
