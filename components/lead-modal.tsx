@@ -70,7 +70,8 @@ export function LeadModal() {
 
   function handleNameChange(v: string) {
     const filtered = v.replace(/[^a-zA-Zа-яА-ЯёЁ\s\-]/g, "").slice(0, 20)
-    setName(filtered)
+const capitalized = filtered.charAt(0).toUpperCase() + filtered.slice(1)
+setName(capitalized)
     if (nameTouched) setNameError(validateName(filtered))
   }
 
