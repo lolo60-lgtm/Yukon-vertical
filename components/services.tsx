@@ -81,80 +81,87 @@ export function Services() {
       </div>
 
       <div className="mx-auto max-w-7xl px-4 pb-14 pt-14 md:pb-20 md:pt-14">
-        {/* Основные курсы */}
-        <div className="grid gap-8 md:grid-cols-2 items-stretch">
-          {services.filter((s) => s.featured).map((service, i) => (
-            service.title === "Длинный курс" ? null :
-            <AnimatedCard key={service.title} delay={i * 150}>
-              <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-xl">
-                <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
-                  <img src={service.image} alt={service.title}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="flex flex-1 flex-col items-center justify-between gap-4 p-6 text-center">
-                  <div className="flex flex-col items-center gap-3">
-                    <h3 className="font-serif text-3xl font-bold text-card-foreground sm:text-4xl">{service.title}</h3>
-                    <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">{service.description}</p>
-                    <span className="font-sans text-4xl font-semibold text-foreground/70">{"799 zł"}</span>
-                  </div>
-                  <div className="flex flex-wrap justify-center gap-3">
-                    {service.available !== false ? (
-                      <>
-                        <button
-                          onClick={() => openLeadModal()}
-                          className="btn-breathe rounded-lg px-6 py-3 text-base font-semibold text-white bg-accent transition-all duration-200 hover:scale-105 hover:bg-foreground hover:shadow-lg"
-                        >
-                          {"Записаться на курс"}
-                        </button>
-                        <a href="/knowledge/kak-prohodit-obuchenie"
-                          className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
-                          {"Подробнее"}
-                        </a>
-                      </>
-                      ) : (
-                      <button disabled className="w-full cursor-not-allowed rounded-lg border-2 border-gray-300 bg-gray-100 px-6 py-3 text-base font-semibold text-gray-400">
-                        {"Пока недоступен"}
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </AnimatedCard>
-          ))}
-        </div>
+        {/* ГЛАВНЫЙ КОНТЕЙНЕР (Сетка на 2 колонки для десктопа) */}
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-stretch">
+          
+          {/* ЛЕВАЯ КОЛОНКА: Основные курсы */}
+          <div className="flex flex-col h-full">
+            {services.filter((s) => s.featured).map((service, i) => (
+              service.title === "Длинный курс" ? null :
+              <AnimatedCard key={service.title} delay={i * 150}>
+                <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-xl">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
+                    <img src={service.image} alt={service.title}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  </div>
+                  <div className="flex flex-1 flex-col items-center justify-between gap-4 p-6 text-center">
+                    <div className="flex flex-col items-center gap-3">
+                      <h3 className="font-serif text-3xl font-bold text-card-foreground sm:text-4xl">{service.title}</h3>
+                      <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">{service.description}</p>
+                      <span className="font-sans text-4xl font-semibold text-foreground/70">{"799 zł"}</span>
+                    </div>
+                    <div className="flex flex-wrap justify-center gap-3">
+                      {service.available !== false ? (
+                        <>
+                          <button
+                            onClick={() => openLeadModal()}
+                            className="btn-breathe rounded-lg px-6 py-3 text-base font-semibold text-white bg-accent transition-all duration-200 hover:scale-105 hover:bg-foreground hover:shadow-lg"
+                          >
+                            {"Записаться на курс"}
+                          </button>
+                          <a href="/knowledge/kak-prohodit-obuchenie"
+                            className="rounded-lg border-2 border-accent px-6 py-3 text-base font-semibold text-accent transition-all hover:scale-105 hover:bg-accent hover:text-white">
+                            {"Подробнее"}
+                          </a>
+                        </>
+                        ) : (
+                        <button disabled className="w-full cursor-not-allowed rounded-lg border-2 border-gray-300 bg-gray-100 px-6 py-3 text-base font-semibold text-gray-400">
+                          {"Пока недоступен"}
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </AnimatedCard>
+            ))}
+          </div>
 
-        {/* Доп. услуги */}
-         <AnimatedCard>
-          <h3 className="mt-14 font-serif text-3xl font-bold text-foreground sm:text-4xl text-center">
-            {"Дополнительные услуги"}
-          </h3>
-        </AnimatedCard>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.filter((s) => !s.featured).map((service, i) => {
-            const Icon = service.icon
-            return (
-              <AnimatedCard key={service.title} delay={i * 100}>
-                <div className="group flex h-full flex-col items-center rounded-xl border border-border bg-background p-6 text-center shadow-sm transition-all duration-300 hover:border-accent/30 hover:scale-105 hover:shadow-xl">
-                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent/10 transition-transform duration-300 group-hover:scale-105">
-                    <Icon className="h-8 w-8 text-accent" />
-                  </div>
-                  <h3 className="font-serif text-xl font-bold text-foreground">{service.title}</h3>
-                  <p className="mt-2 text-base leading-relaxed text-muted-foreground">{service.description}</p>
-                </div>
-              </AnimatedCard>
-            )
-          })}
-        </div>
+          {/* ПРАВАЯ КОЛОНКА: Доп. услуги + Кнопка */}
+          <div className="flex flex-col h-full pt-8 lg:pt-0">
+            <AnimatedCard delay={200}>
+              <h3 className="mb-6 font-serif text-3xl font-bold text-foreground sm:text-4xl text-center">
+                {"Дополнительные услуги"}
+              </h3>
+            </AnimatedCard>
+            
+            <div className="grid gap-4 sm:grid-cols-2 flex-1">
+              {services.filter((s) => !s.featured).map((service, i) => {
+                const Icon = service.icon
+                return (
+                  <AnimatedCard key={service.title} delay={i * 100}>
+                    <div className="group flex h-full flex-col items-center justify-center rounded-xl border border-border bg-background p-5 text-center shadow-sm transition-all duration-300 hover:border-accent/30 hover:scale-105 hover:shadow-xl">
+                      <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 transition-transform duration-300 group-hover:scale-105">
+                        <Icon className="h-7 w-7 text-accent" />
+                      </div>
+                      <h3 className="font-serif text-lg font-bold text-foreground">{service.title}</h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{service.description}</p>
+                    </div>
+                  </AnimatedCard>
+                )
+              })}
+            </div>
 
-        {/* Кнопка консультации */}
-        <div className="mt-14 mb-14 flex justify-center">
-          <button
-            onClick={() => openLeadModal("Бесплатная консультация?")}
-            className="btn-breathe rounded-xl px-10 py-4 text-base font-semibold text-white bg-accent shadow-md transition-all duration-200 hover:scale-105 hover:bg-foreground hover:shadow-xl"
-          >
-            {"Получить бесплатную консультацию"}
-          </button>
-        </div>
+            <div className="mt-6 flex justify-center w-full">
+              <button
+                onClick={() => openLeadModal("Бесплатная консультация?")}
+                className="btn-breathe w-full rounded-xl px-6 py-4 text-base font-semibold text-white bg-accent shadow-md transition-all duration-200 hover:scale-[1.02] hover:bg-foreground hover:shadow-xl"
+              >
+                {"Получить бесплатную консультацию"}
+              </button>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   )
