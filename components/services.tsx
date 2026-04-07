@@ -152,10 +152,10 @@ export function Services() {
               })}
             </div>
 
-            <div className="mt-6 flex justify-center w-full">
+            <div className="mt-6 flex justify-center w-full py-2">
               <button
                 onClick={() => openLeadModal("Бесплатная консультация?")}
-                className="btn-breathe w-full rounded-xl px-6 py-4 text-base font-semibold text-white bg-accent shadow-md transition-all duration-200 hover:scale-[1.02] hover:bg-foreground hover:shadow-xl"
+                className="btn-breathe w-full lg:w-auto rounded-xl px-6 lg:px-12 py-4 text-base font-semibold text-white bg-accent shadow-md transition-all duration-200 hover:scale-[1.02] hover:bg-foreground hover:shadow-xl"
               >
                 {"Получить бесплатную консультацию"}
               </button>
