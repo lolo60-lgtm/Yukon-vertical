@@ -115,7 +115,7 @@ export function Pricing() {
           </div>
         </FadeInSection>
 
-       <div className="mt-12 grid gap-6 md:grid-cols-2 items-stretch mx-auto max-w-4xl">
+       <div className="mt-12 flex flex-col md:flex-row justify-center items-center md:items-stretch gap-8 mx-auto max-w-4xl w-full [&>*]:flex-1 [&>*]:w-full [&>*]:max-w-[420px]">
           {plans.map((plan, i) => (
             plan.title === "Длинный курс" ? null :
             <FadeInSection key={plan.title} delay={i * 120}>
