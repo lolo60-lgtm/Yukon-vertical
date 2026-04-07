@@ -84,6 +84,7 @@ export function Services() {
         {/* Основные курсы */}
         <div className="grid gap-8 md:grid-cols-2 items-stretch">
           {services.filter((s) => s.featured).map((service, i) => (
+            service.title === "Длинный курс" ? null :
             <AnimatedCard key={service.title} delay={i * 150}>
               <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-xl">
                 <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
@@ -94,7 +95,7 @@ export function Services() {
                   <div className="flex flex-col items-center gap-3">
                     <h3 className="font-serif text-3xl font-bold text-card-foreground sm:text-4xl">{service.title}</h3>
                     <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">{service.description}</p>
-                    <Globe className="h-8 w-8 text-foreground/50 transition-transform duration-300 group-hover:scale-105" />
+                    <span className="font-sans text-2xl font-semibold text-foreground/70">{"799 zł"}</span>
                   </div>
                   <div className="flex flex-wrap justify-center gap-3">
                     {service.available !== false ? (
