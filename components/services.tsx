@@ -95,7 +95,7 @@ export function Services() {
                   <div className="flex flex-col items-center gap-3">
                     <h3 className="font-serif text-3xl font-bold text-card-foreground sm:text-4xl">{service.title}</h3>
                     <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">{service.description}</p>
-                    <span className="font-sans text-2xl font-semibold text-foreground/70">{"799 zł"}</span>
+                    <span className="font-sans text-4xl font-semibold text-foreground/70">{"799 zł"}</span>
                   </div>
                   <div className="flex flex-wrap justify-center gap-3">
                     {service.available !== false ? (
