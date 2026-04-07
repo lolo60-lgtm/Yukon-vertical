@@ -115,9 +115,9 @@ export function Pricing() {
           </div>
         </FadeInSection>
 
-       <div className="mt-12 grid gap-6 md:grid-cols-2 items-stretch">
-          {plans.map((plan, i) => (
-            plan.title === "Длинный курс" ? null :
+       <div className="mt-12 grid gap-6 md:grid-cols-2 items-stretch mx-auto max-w-4xl">
+          {plans.map((plan, i) => (
+            plan.title === "Длинный курс" ? null :
             <FadeInSection key={plan.title} delay={i * 120}>
               <div className={`relative flex h-full flex-col rounded-2xl border transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
                 plan.featured ? "border-accent bg-foreground shadow-xl" : "border-border bg-background shadow-sm"
