@@ -129,31 +129,6 @@ export function Services() {
             {"Дополнительные услуги"}
           </h3>
         </AnimatedCard>
-
-        {/* Длинный курс — только десктоп, скрыт на мобильном */}
-        <div className="hidden md:block mt-8">
-          <AnimatedCard delay={150}>
-            <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-xl">
-              <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
-                <img src="https://i.postimg.cc/m2N6ShBS/Dlinnyj-kurs.jpg" alt="Длинный курс"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-60" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="rounded-full bg-foreground/80 px-6 py-2 font-serif text-lg font-bold text-white">Скоро доступен</span>
-                </div>
-              </div>
-              <div className="flex flex-1 flex-col items-center justify-between gap-4 p-6 text-center">
-                <div className="flex flex-col items-center gap-3">
-                  <h3 className="font-serif text-3xl font-bold text-card-foreground sm:text-4xl">{"Длинный курс"}</h3>
-                  <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">{"Для водителей с категорией C, выданной после 09.09.2009 года. Полный курс обучения с теорией и практикой."}</p>
-                </div>
-                <button disabled className="w-full cursor-not-allowed rounded-lg border-2 border-gray-300 bg-gray-100 px-6 py-3 text-base font-semibold text-gray-400">
-                  {"Пока недоступен"}
-                </button>
-              </div>
-            </div>
-          </AnimatedCard>
-        </div>
-
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.filter((s) => !s.featured).map((service, i) => {
             const Icon = service.icon
