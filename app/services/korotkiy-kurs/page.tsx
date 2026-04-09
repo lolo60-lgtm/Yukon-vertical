@@ -24,7 +24,12 @@ export default function KorotkiyKursPage() {
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/80">
               Если у вас есть категория C или D, но получены они давно — вы почти наверняка можете оформить Код 95 по короткому курсу. Без долгой учёбы, без экзамена.
             </p>
-            <div className="mt-8">
+           <div className="mt-6 mb-2">
+              <p className="font-sans text-3xl font-semibold text-white/90">
+                799 <span className="text-xl font-medium text-white/60">zł</span>
+              </p>
+            </div>
+            <div className="mt-4">
               <LeadButton
                 title="Короткий курс КОД 95"
                 className="rounded-xl bg-accent px-10 py-4 text-base font-semibold text-white shadow-md transition-all btn-breathe hover:scale-105 hover:bg-[#3670c2] hover:shadow-xl"
